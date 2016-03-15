@@ -34,3 +34,6 @@ To install Ruby on Rails, run:
 [Ruby on Rails Tutorial][rails_tut]
 
 [rails_tut]: https://www.railstutorial.org/book
+
+# Starting the Server
+Run `rails server` and visit `http://localhost:3000/`
