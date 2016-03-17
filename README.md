@@ -30,6 +30,16 @@ Mac users can run the following:
 To install Ruby on Rails, run:  
 `gem install rails -v 4.2.6`
 
+### \[might be optional] Installing DevKit
+If error occurs while running `bundle install`, you might need to download the Ruby DevKit.
+
+[Download][dl] the 32-bit DevKit for Ruby 2.0 and above
+Extract the self-extracting archive into a directory (without spaces)
+cd into the directory
+run `ruby dk.rb init` followed by `ruby dk.rb install`
+
+[dl]: http://rubyinstaller.org/downloads/
+
 # Resources
 [Ruby on Rails Tutorial][rails_tut]
 
@@ -37,3 +47,9 @@ To install Ruby on Rails, run:
 
 # Starting the Server
 Run `rails server` and visit `http://localhost:3000/`
+
+If rails prompts for you to do `bundle install`, please do.
+
+if you encounter 'PendingMigrationError'
+stop you server and run this
+'bundle exec rake db:migrate'
