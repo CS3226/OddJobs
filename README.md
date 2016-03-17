@@ -47,3 +47,4 @@ run `ruby dk.rb init` followed by `ruby dk.rb install`
 
 # Starting the Server
 Run `rails server` and visit `http://localhost:3000/`
+If rails prompts for you to do `bundle install`, please do.
