@@ -47,9 +47,12 @@ run `ruby dk.rb init` followed by `ruby dk.rb install`
 
 # Starting the Server
 Run `rails server` and visit `http://localhost:3000/`
+<<<<<<< HEAD
 
 If rails prompts for you to do `bundle install`, please do.
 
 if you encounter 'PendingMigrationError'
 stop you server and run this
 'bundle exec rake db:migrate'
+
+If rails prompts for you to do `bundle install`, please do.
