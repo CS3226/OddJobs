@@ -40,6 +40,11 @@ run `ruby dk.rb init` followed by `ruby dk.rb install`
 
 [dl]: http://rubyinstaller.org/downloads/
 
+### \[might be optional] Installing NodeJS
+If error `execJS::ProgramError` occurs while loading a page, download and install [NodeJS 32-bit v 4.4.0][NodeJS].
+
+[NodeJS]: https://nodejs.org/en/download/
+
 # Resources
 [Ruby on Rails Tutorial][rails_tut]
 
