@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>OddJobs</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.3/angular-material.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:700;500;400" />
+
 </head>
-<body>
-
+<body ng-app="OddjobApp" ng-cloak>
+<div layout="column" layout-fill>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <span>My App's Title</span>
+      <!-- fill up the space between left and right area -->
+      <span flex></span>
+      <md-button>
+        Right Bar Button
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-content>
+  </md-content>
+</div>
+hello	
 <%= yield %>
+hello
 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.3/angular-material.min.js"></script>
+
+<script type="text/javascript">    
+    angular.module('OddjobApp', ['ngMaterial']);
+  </script>
 </body>
 </html>
