@@ -14,7 +14,11 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
-    @listing = Listing.new
+    unless user_signed_in?
+      redirect_to "/users/sign_in"
+    end
+      flash.now[:notice] = "hello #{current_user.name}"
+      @listing = Listing.new
   end
 
   # GET /listings/1/edit
