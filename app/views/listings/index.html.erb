@@ -1,8 +1,70 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Listings</h1>
+<md-input-container>
+  <label>Search</label>
+  <input type="text" ng-model="searchStr">
+</md-input-container>
 
-<table>
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="30" layout="column">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Action buttons</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <div flex="100" flex-gt-sm="50" layout="column">
+      <div>
+        <div flex-xs flex="50">
+          <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+            Photography
+          </md-checkbox>
+        </div>
+        <!--
+          In IE, we cannot apply flex directly to <fieldset>
+          @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
+        -->
+          <!--<legend>Using &lt;md-checkbox&gt; with &lt;ng-checked&gt; </legend>
+          <div layout="row" layout-wrap flex>
+            <div flex="50" ng-repeat="item in items">
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                {{ item }} <span ng-if="exists(item, selected)">selected</span>
+              </md-checkbox>
+            </div>
+          </div>-->
+      </div>
+    </div>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Filter</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+    <div flex-xs flex-gt-xs="70" layout="column">
+<% @listings.each do |listing| %>
+<md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline"><%= listing.title %></span>
+          </md-card-title-text>
+          <!--<md-card-title-media>
+            <div class="md-media-sm card-media"></div>
+          </md-card-title-media>-->
+        </md-card-title>
+        <md-card-content>
+        <span class="md-subhead"><%= listing.poster_id %></span><br>
+        <span class=".md-body-1"><%= listing.description %></span><br>
+        <span class=".md-body-1"><i class="material-icons">attach_money</i></span>
+      </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Apply</md-button>
+        </md-card-actions>
+      </md-card>
+<% end %>
+</div>
+</md-content>
+<!--<table>
   <thead>
     <tr>
       <th>Title</th>
@@ -26,7 +88,7 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table>-->
 
 <br>
 
