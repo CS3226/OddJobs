@@ -11,17 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320021666) do
+ActiveRecord::Schema.define(version: 20160326064916) do
+
+  create_table "job_applications", force: :cascade do |t|
+    t.integer  "applicant"
+    t.integer  "listing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "listing_id"
+    t.text     "details"
+  end
+
+  add_index "job_applications", ["listing_id"], name: "index_job_applications_on_listing_id"
+  add_index "job_applications", ["user_id"], name: "index_job_applications_on_user_id"
 
   create_table "listings", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "poster"
     t.boolean  "is_open?"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "poster_id"
+    t.integer  "job_applications_id"
   end
+
+  add_index "listings", ["job_applications_id"], name: "index_listings_on_job_applications_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

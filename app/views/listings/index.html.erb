@@ -53,7 +53,7 @@
 <md-card>
         <md-card-title>
           <md-card-title-text>
-            <span class="md-title"><%= listing.title %></span>
+            <span class="md-title"><%= link_to listing.title, listing %></span>
           </md-card-title-text>
           <!--<md-card-title-media>
             <div class="md-media-sm card-media"></div>
@@ -66,6 +66,7 @@
       </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
           <md-button>Apply</md-button>
+          <%= link_to 'Apply Now!', listing %>
         </md-card-actions>
       </md-card>
 <% end %>
