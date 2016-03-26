@@ -10,10 +10,13 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<% unless user_signed_in? %>
-<p><%= link_to 'Sign Up', '/users/sign_up' %></p>
-<p><%= link_to 'Log In', '/users/sign_in' %></p>
+<% if user_signed_in? %>
+  <p><%= link_to 'Log Out', destroy_user_session_path, :method => :delete %></p>
+<% else %>
+  <p><%= link_to 'Sign Up', '/users/sign_up' %></p>
+  <p><%= link_to 'Log In', '/users/sign_in' %></p>
 <% end %>
+
 <%= yield %>
 
 </body>
