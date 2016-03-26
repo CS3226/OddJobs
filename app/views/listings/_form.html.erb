@@ -11,23 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :poster_id %><br>
-    <%= f.number_field :poster_id %>
-  </div>
-  <div class="field">
-    <%= f.label :is_open? %><br>
-    <%= f.check_box :is_open? %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+ <md-content layout-padding>
+    <div>
+      <form name="userForm">
+        <div layout-gt-sm="row" class="field">
+          <md-input-container class="md-block" flex-gt-sm>
+            <%= f.label :title %><br>
+            <%= f.text_field :title %>
+          </md-input-container>
+        </div>
+        <div class="field">
+        <md-input-container class="md-block">
+          <%= f.label :description %><br>
+          <%= f.text_area :description %>
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row" class="field">
+        <md-input-container class="md-block">
+          <%= f.label :is_open? %>
+          <%= f.check_box :is_open? %>
+        </md-input-container>
+       </div>
+      </form>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </md-content>
 <% end %>
