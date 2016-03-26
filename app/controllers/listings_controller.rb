@@ -10,7 +10,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
-    @job_application = JobApplication.new
+    @job_application = @listing.job_applications.new
   end
 
   # GET /listings/new

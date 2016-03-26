@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @job_applications = JobApplication.where(user: @user)
   end
 
   # GET /users/new
