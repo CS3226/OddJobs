@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+/* to prevent flickering of visual elements before AngularJS is loaded */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+}
+
+#id {
+	font-size: 30px;
+}
