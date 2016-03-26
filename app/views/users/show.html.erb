@@ -10,5 +10,20 @@
   <%= @user.email %>
 </p>
 
+Job Applications by User: <br />
+<% @job_applications.each do |job_application| %>
+  Application_id: <%= job_application.id %> <br />
+  Listing_id: <%= job_application.listing_id %> <br />
+  Details: <%= job_application.details %>
+<% end %> <br />
+
+<br />
+Listings by User: <br />
+<% @listings.each do |listing| %>
+  Listing_id: <%= listing.id %> <br />
+  Title <%= listing.title %> <br />
+  Description <%= listing.description %> <br />
+<% end %> <br />
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

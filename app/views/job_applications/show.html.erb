@@ -2,12 +2,12 @@
 
 <p>
   <strong>Applicant:</strong>
-  <%= @job_application.applicant %>
+  <%= @job_application.user_id %>
 </p>
 
 <p>
   <strong>Listing:</strong>
-  <%= @job_application.listing %>
+  <%= @job_application.listing_id %>
 </p>
 
 <%= link_to 'Edit', edit_job_application_path(@job_application) %> |
