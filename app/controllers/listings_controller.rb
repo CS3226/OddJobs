@@ -10,11 +10,18 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @job_application = JobApplication.new
   end
 
   # GET /listings/new
   def new
-    @listing = Listing.new
+    if user_signed_in?
+      flash.now[:notice] = "Hello #{current_user.name}, have fun creating a new listing!"
+      @listing = Listing.new
+    else
+      redirect_to "/users/sign_in"
+      flash[:alert] = "Please sign in to create new listings"
+    end
   end
 
   # GET /listings/1/edit

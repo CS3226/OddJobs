@@ -11,23 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160319022942) do
+ActiveRecord::Schema.define(version: 20160326064916) do
+
+  create_table "job_applications", force: :cascade do |t|
+    t.integer  "applicant"
+    t.integer  "listing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "listing_id"
+    t.text     "details"
+  end
+
+  add_index "job_applications", ["listing_id"], name: "index_job_applications_on_listing_id"
+  add_index "job_applications", ["user_id"], name: "index_job_applications_on_user_id"
 
   create_table "listings", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "poster"
     t.boolean  "is_open?"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "poster_id"
+    t.integer  "job_applications_id"
   end
+
+  add_index "listings", ["job_applications_id"], name: "index_listings_on_job_applications_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
