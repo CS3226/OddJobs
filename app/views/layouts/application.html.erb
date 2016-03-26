@@ -10,8 +10,10 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<p><%= link_to 'Sign Up', '/user/sign_up' %></p>
-<p><%= link_to 'Log In', '/user/sign_in' %></p>
+<% unless user_signed_in? %>
+<p><%= link_to 'Sign Up', '/users/sign_up' %></p>
+<p><%= link_to 'Log In', '/users/sign_in' %></p>
+<% end %>
 <%= yield %>
 
 </body>
