@@ -10,5 +10,28 @@
   <%= @user.email %>
 </p>
 
+<% current_user.listings.each do |listing| %>
+<md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-title"><%= link_to listing.title, listing %></span>
+          </md-card-title-text>
+          <!--<md-card-title-media>
+            <div class="md-media-sm card-media"></div>
+          </md-card-title-media>-->
+        </md-card-title>
+        <md-card-content>
+        <span class="md-subhead"><%= listing.poster_id %></span><br>
+        <span class=".md-body-1"><%= listing.description %></span><br>
+        <span class=".md-body-1"><i class="material-icons">attach_money</i></span>
+        <span class=".md-body-1"><%= link_to 'Applicants', show_listing_path(@listing) %></span><br>
+      </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>
+          <%= link_to 'Apply', listing %>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+<% end %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
