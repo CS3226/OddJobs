@@ -13,13 +13,6 @@
 <body ng-app="OddjobApp">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  
-  <% if user_signed_in? %>
-    <p><%= link_to 'Log Out', destroy_user_session_path, :method => :delete %></p>
-  <% else %>
-    <p><%= link_to 'Sign Up', '/users/sign_up' %></p>
-    <p><%= link_to 'Log In', '/users/sign_in' %></p>
-  <% end %>
 
   <ui-view>
     <md-toolbar>
@@ -27,9 +20,20 @@
         <span><a href="\">OddJobs</a></span>
         <!-- fill up the space between left and right area -->
         <span flex></span>
-        <md-button>
-          <md-icon>more_vert</md-icon>
-        </md-button>
+        
+          <% if user_signed_in? %>
+          <md-button>
+            <%= link_to 'Log Out', destroy_user_session_path, :method => :delete %>
+            </md-button>
+          <% else %>
+          <md-button>
+           <%= link_to 'Sign Up', '/users/sign_up' %>
+           </md-button>
+           <md-button>
+            <%= link_to 'Log In', '/users/sign_in' %>
+            </md-button>
+          <% end %>
+        
       </div>
     </md-toolbar>
 
