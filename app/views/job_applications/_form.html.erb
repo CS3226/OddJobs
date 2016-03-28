@@ -12,7 +12,7 @@
   <% end %>
 
   <md-divider ng-if="!$last"></md-divider>
-  <div ng-show="isApplication" class="ng-show">
+  <div ng-hide="isApplication" class="ng-hide">
   <md-card>
     <md-card-title>
       <md-card-title-text>
@@ -60,7 +60,7 @@
     <md-card-content>
     <md-card-actions layout="row" layout-align="end center">
       <%#=<md-button class="md-raised">Submit</md-button>%>
-      <%= f.submit "Submit"%>
+      <%= f.submit "Submit", class: "md-raised md-button md-ink-ripple"%>
     </md-card-actions>
   </md-content>
   </md-card>

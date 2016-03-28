@@ -4,25 +4,21 @@
   <md-card>
     <md-card-title>
       <md-card-title-text>
-        <span class="md-headline">Job Details</span>
+        <span class="md-headline"><%= @listing.title %></span>
       </md-card-title-text>
     </md-card-title>
     <br></br>
     <md-card-content>  
       <p>
         <strong>Description:</strong>
-        This is a dump Description. There is a need to fix the design and layout of this section soon!
+        <%= @listing.description %>
       </p>
 
       <p>
         <strong>Posted By</strong>
-        admin
+        <%= @listing.poster_id %>
       </p>
 
-      <p>
-        <strong>Location</strong>
-        West, Singapore
-      </p>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
       <md-button class="md-raised" ng-click="isApplication = ! isApplication">Apply now!</md-button>
