@@ -12,7 +12,11 @@
   <% end %>
 
   <md-divider ng-if="!$last"></md-divider>
-  <div ng-hide="isApplication" class="ng-hide">
+  <% if @isApplication == "true" %>
+  <div ng-hide="isApplication" class = "ng-hide">
+  <% else %>
+  <div ng-show="isApplication" class="ng-show">
+  <% end %>
   <md-card>
     <md-card-title>
       <md-card-title-text>

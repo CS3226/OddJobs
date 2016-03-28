@@ -11,6 +11,11 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show
     @job_application = @listing.job_applications.new
+    if params[:isApplication] == "true"
+      @isApplication = "true"
+    else
+      @isApplication = "false"
+    end
   end
 
   # GET /listings/new
