@@ -29,8 +29,8 @@
         </div>
       </md-input-container>        
       <md-input-container class="md-block">    
-        <label>Applicant name</label>
-        <input md-maxlength="30" required md-no-asterisk name="name" ng-model="job.applicant">
+        <label>Applicant id</label>
+        <input md-maxlength="30" required md-no-asterisk name="name" ng-model="job.applicant"></input>
         <div ng-messages="jobApplicationForm.applicant.$error">
           <div ng-message="required">This is required.</div>
           <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
@@ -65,5 +65,4 @@
     </md-card-actions>
   </md-content>
   </md-card>
-  </div>
 <% end %>
