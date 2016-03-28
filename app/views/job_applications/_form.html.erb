@@ -12,7 +12,7 @@
   <% end %>
 
   <md-divider ng-if="!$last"></md-divider>
-  <div ng-hide="isApplication" class="ng-hide">
+  <div ng-show="isApplication" class="ng-show">
   <md-card>
     <md-card-title>
       <md-card-title-text>
@@ -30,7 +30,8 @@
       </md-input-container>        
       <md-input-container class="md-block">    
         <label>Applicant id</label>
-        <input md-maxlength="30" required md-no-asterisk name="name" ng-model="job.applicant"></input>
+        <%#=<input md-maxlength="30" required md-no-asterisk name="name" ng-model="job.applicant"></input> %>
+          <%= f.number_field :listing %>
         <div ng-messages="jobApplicationForm.applicant.$error">
           <div ng-message="required">This is required.</div>
           <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
@@ -61,7 +62,8 @@
     </form>
     <md-card-content>
     <md-card-actions layout="row" layout-align="end center">
-      <md-button class="md-raised">Submit</md-button>
+      <%#=<md-button class="md-raised">Submit</md-button>%>
+      <%= f.submit "Submit"%>
     </md-card-actions>
   </md-content>
   </md-card>
