@@ -20,9 +20,7 @@
         <span flex></span>
         
           <% if user_signed_in? %>
-          <md-button>
-            <%= link_to 'My Profile', current_user %>
-          </md-button>
+          <%= link_to "My Profile", current_user, class:"md-button"%>
           <md-button>
             <%= link_to 'Log Out', destroy_user_session_path, :method => :delete %>
           </md-button>
