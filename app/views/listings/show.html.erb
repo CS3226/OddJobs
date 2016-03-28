@@ -1,28 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @listing.title %>
-</p>
+  <md-content layout-padding>  
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Job Details</span>
+      </md-card-title-text>
+    </md-card-title>
+    <br></br>
+    <md-card-content>  
+      <p>
+        <strong>Description:</strong>
+        This is a dump Description. There is a need to fix the design and layout of this section soon!
+      </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
+      <p>
+        <strong>Posted By</strong>
+        admin
+      </p>
 
-<p>
-  <strong>Poster_id:</strong>
-  <%= @listing.poster_id %>
-</p>
-
-<p>
-  <strong>Is open?:</strong>
-  <%= @listing.is_open? %>
-</p>
-
-<h1>
-  Application Details:
-</h1>
+      <p>
+        <strong>Location</strong>
+        West, Singapore
+      </p>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button class="md-raised" ng-click="isApplication = ! isApplication">Apply Now!</md-button>
+    </md-card-actions>
+  </md-card>
 
 <%= render 'job_applications/form' %>
 
