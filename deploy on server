@@ -3,7 +3,7 @@ Ip address. I will continue debug it. This is the website I follow
 https://www.digitalocean.com/community/tutorials/how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean#configuration-details
 
 To connect our web server
-1. Go to http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html download putty.exe
+1. Go to http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html download putty.exe (if you are window user)
 2. run it
 3. Type this 188.166.213.96 in host name
 4. Type OddJobs in saved sessions and click open
