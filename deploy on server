@@ -1,0 +1,52 @@
+These are what I have done so far. I have cloned our code to the server but it will return 504 Gateway Time-out when I go into that 
+Ip address. I will continue debug it. This is the website I follow 
+https://www.digitalocean.com/community/tutorials/how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean#configuration-details
+
+To connect our web server
+1. Go to http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html download putty.exe
+2. run it
+3. Type this 188.166.213.96 in host name
+4. Type OddJobs in saved sessions and click open
+5. Type root as user name
+6. Type 1234567890abc as password
+7. Type cd ~rails to change the directory and the OddJobs folder is under that location
+
+How I configurate the setting
+1. cd ~rails
+2. git clone https://github.com/CS3226/OddJobs
+3. Configure the Database Connection (PostgreSQL database)
+4. cp ~rails/rails_project/config/database.yml ~rails/OddJobs/config/
+5. nano ~rails/OddJobs/config/database.yml
+6. Modify this file
+  production:
+  <<: *default
+  database: OddJobs_production
+  username: rails
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+7. Update Gemfile
+8. nano ~rails/sample_tasks/Gemfile
+9. Include the the pg and unicorn gems by adding these lines:
+   group :production do
+   gem 'unicorn'
+   gem 'pg'
+   end
+10. cd ~rails/OddJobs && bundle install
+11. run rake tasks
+12. RAILS_ENV=production rake db:create
+    RAILS_ENV=production rake db:migrate
+    RAILS_ENV=production rake assets:precompile
+13. chown -R rails: /home/rails/OddJobs
+14. Configure Unicorn
+15. nano /etc/unicorn.conf
+16. modify this
+    working_directory "/home/rails/OddJobs"
+17. nano /etc/default/unicorn
+18. modify this
+    APP_ROOT=/home/rails/OddJobs
+19. service unicorn restart
+20. Update Nginx Configuration
+21. nano /etc/nginx/sites-enabled/rails
+22. modify this
+    root /home/rails/OddJobs/public;
+23. service nginx reload
+24. Access Your Rails App by go to http://188.166.213.96 but it return 504 Gateway Time-out
