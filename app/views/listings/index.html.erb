@@ -22,12 +22,12 @@
         </md-card-title>
         <md-card-content>
           <div flex="100" flex-gt-sm="50" layout="column">
-      <div>
-        <div flex-xs flex="50">
-          <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-            Photography
-          </md-checkbox>
-        </div>
+            <div>
+              <div flex-xs flex="50">
+                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                  Photography
+                </md-checkbox>
+              </div>
         <!--
           In IE, we cannot apply flex directly to <fieldset>
           @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
@@ -40,8 +40,8 @@
               </md-checkbox>
             </div>
           </div>-->
-      </div>
-    </div>
+            </div>
+          </div>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
           <md-button>Filter</md-button>
@@ -49,8 +49,8 @@
       </md-card>
     </div>
     <div flex-xs flex-gt-xs="70" layout="column">
-<% @listings.each do |listing| %>
-<md-card>
+      <% @listings.each do |listing| %>
+      <md-card>
         <md-card-title>
           <md-card-title-text>
             <span class="md-title"><%= link_to listing.title, listing %></span>
@@ -65,14 +65,18 @@
         <span class=".md-body-1"><i class="material-icons">attach_money</i></span>
       </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button>
-          <%= link_to 'Apply', listing %>
+        <div data-no-turbolink>
+          <%= link_to listing do%>
+          <md-button class="md-raised">
+            Apply
           </md-button>
+          <% end %>
+        </div>  
         </md-card-actions>
       </md-card>
-<% end %>
-</div>
-</md-content>
+      <% end %>
+    </div>
+  </md-content>
 <!--<table>
   <thead>
     <tr>
@@ -100,5 +104,6 @@
 </table>-->
 
 <br>
-
-<%= link_to 'New Listing', new_listing_path %>
+<div data-no-turbolink>
+  <%= link_to 'New Listing', new_listing_path%>
+</div>

@@ -11,19 +11,57 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :applicant %><br>
-    <%= f.number_field :applicant %>
-  </div>
-  <div class="field">
-    <%= f.label :listing %><br>
-    <%= f.number_field :listing %>
-  </div>
-  <div class="field">
-    <%= f.label :details %><br>
-    <%= f.text_area :details %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <md-divider ng-if="!$last"></md-divider>
+  <div ng-hide="isApplication" class="ng-hide">
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Application Form</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>    
+    <form name="jobApplicationForm">
+      <md-input-container class="md-block">
+        <label>Job Title</label>
+        <input required name="jobTitle" ng-model="project.jobTitle">
+        <div ng-messages="projectForm.jobTitle.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>        
+      <md-input-container class="md-block">    
+        <label>Applicant id</label>
+        <%#=<input md-maxlength="30" required md-no-asterisk name="name" ng-model="job.applicant"></input> %>
+          <%= f.number_field :listing %>
+        <div ng-messages="jobApplicationForm.applicant.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Email</label>
+        <input required type="email" name="clientEmail" ng-model="project.clientEmail"
+               minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+        <div ng-messages="projectForm.clientEmail.$error" role="alert">
+          <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+            Your email must be between 10 and 100 characters long and look like an e-mail address.
+          </div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Skills</label>
+        <input required name="skills" ng-model="project.skills"/>
+        <div ng-messages="projectForm.skills.$error" multiple md-auto-hide="false">
+          <div ng-message="required">
+            Indicate your relavant skills and work experience.
+          </div>
+        </div>
+      </md-input-container>
+    </form>
+    <md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+      <%#=<md-button class="md-raised">Submit</md-button>%>
+      <%= f.submit "Submit", class: "md-raised md-button md-ink-ripple"%>
+    </md-card-actions>
+  </md-content>
+  </md-card>
 <% end %>
