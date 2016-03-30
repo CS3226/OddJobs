@@ -20,17 +20,11 @@
         <span flex></span>
         
           <% if user_signed_in? %>
-          <%= link_to "My Profile", current_user, class:"md-button"%>
-          <md-button>
-            <%= link_to 'Log Out', destroy_user_session_path, :method => :delete %>
-          </md-button>
+            <%= link_to "My Profile", current_user, class:"md-button"%>
+            <%= link_to "Logout", destroy_user_session_path, :method => :delete, class:"md-button"%>
           <% else %>
-          <md-button>
-           <%= link_to 'Sign Up', '/users/sign_up' %>
-           </md-button>
-           <md-button>
-            <%= link_to 'Log In', '/users/sign_in' %>
-            </md-button>
+            <%= link_to "Log In", '/users/sign_in', class:"md-button"%>
+            <%= link_to "Sign Up", '/users/sign_up', class:"md-button"%>
           <% end %>
         
       </div>
@@ -49,7 +43,12 @@
 
 
     <script type="text/javascript">    
-      angular.module('OddjobApp', ['ngMaterial']);
+      angular.module('OddjobApp', ['ngMaterial'])
+        .config(function($mdThemingProvider) {
+          $mdThemingProvider.theme('default')
+          .primaryPalette('teal')
+          .accentPalette('amber');
+      });
     </script>
 
 </body>
