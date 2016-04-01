@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 
-
 <md-content class="md-padding" layout-xs="column" layout="row">
     <div flex-xs flex-gt-xs="30" layout="column">
       <md-card>
@@ -18,18 +17,7 @@
                   Photography
                 </md-checkbox>
               </div>
-        <!--
-          In IE, we cannot apply flex directly to <fieldset>
-          @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
-        -->
-          <!--<legend>Using &lt;md-checkbox&gt; with &lt;ng-checked&gt; </legend>
-          <div layout="row" layout-wrap flex>
-            <div flex="50" ng-repeat="item in items">
-              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
-                {{ item }} <span ng-if="exists(item, selected)">selected</span>
-              </md-checkbox>
-            </div>
-          </div>-->
+
             </div>
           </div>
         </md-card-content>
@@ -38,28 +26,31 @@
         </md-card-actions>
       </md-card>
     </div>
+
+
     <div flex-xs flex-gt-xs="70" layout="column">
-      <% @listings.each do |listing| %>
       <md-card>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-title"><%= link_to listing.title, listing_path(id:listing, isApplication: "false")%></span>
-          </md-card-title-text>
-          <!--<md-card-title-media>
-            <div class="md-media-sm card-media"></div>
-          </md-card-title-media>-->
-        </md-card-title>
-        <md-card-content>
-        <span class="md-subhead"><%= listing.poster_id %></span><br>
+      <md-content>
+      <md-list>
+      <% @listings.each do |listing| %>
+      <md-list-item class="md-3-line" layout-margin>
+      <div class="md-list-item-text">
+        <span class="md-subhead"><%= link_to listing.title, listing_path(id:listing, isApplication: "false")%>
+        <br><%= listing.poster_id %></span><br>
         <span class=".md-body-1"><%= listing.description %></span><br>
-        <span class=".md-body-1"><i class="material-icons">attach_money</i></span>
-      </md-card-content>
+        <span><i class="material-icons md-18">attach_money</i></span>
         <md-card-actions layout="row" layout-align="end center">
           <%= link_to "Apply", listing_path(id:listing, isApplication: "true"), class:"md-button md-raised"%>
         </md-card-actions>
-      </md-card>
+      </div> 
+      </md-list-item>
+      <md-divider ng-if="!$last" md-inset layout="center" style="margin-left: 30px; margin-right: 30px;"></md-divider>
       <% end %>
+      <md-list>
+    </md-content>
+  </md-card>
     </div>
+
   </md-content>
 
 <br>
