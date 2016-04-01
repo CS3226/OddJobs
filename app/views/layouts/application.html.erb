@@ -16,9 +16,20 @@
     <md-toolbar>
       <div class="md-toolbar-tools">
         <span><a href="\">OddJobs</a></span>
+
+        <div class="md-padding" layout-xs="column" layout="row" layout-align="end center">
+          <div flex-xs flex-gt-xs="100" layout="column" layout-align="right">
+          <md-input-container>
+            <label>Search</label>
+            <input type="text" ng-model="searchStr">
+          </md-input-container>
+          </div>
+          <div flex-xs layout="column">
+            <md-button class="md-raised">Search</md-button>
+          </div>
+        </div>
         <!-- fill up the space between left and right area -->
         <span flex></span>
-        
           <% if user_signed_in? %>
             <%= link_to "My Profile", current_user, class:"md-button"%>
             <%= link_to "Logout", destroy_user_session_path, :method => :delete, class:"md-button"%>
@@ -26,7 +37,7 @@
             <%= link_to "Log In", '/users/sign_in', class:"md-button"%>
             <%= link_to "Sign Up", '/users/sign_up', class:"md-button"%>
           <% end %>
-        
+
       </div>
     </md-toolbar>
 
