@@ -53,7 +53,7 @@
       <md-card>
         <md-card-title>
           <md-card-title-text>
-            <span class="md-title"><%= link_to listing.title, listing %></span>
+            <span class="md-title"><%= link_to listing.title, listing_path(id:listing, isApplication: "false")%></span>
           </md-card-title-text>
           <!--<md-card-title-media>
             <div class="md-media-sm card-media"></div>
@@ -65,13 +65,11 @@
         <span class=".md-body-1"><i class="material-icons">attach_money</i></span>
       </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-        <div data-no-turbolink>
-          <%= link_to listing do%>
+          <%= link_to listing_path(id:listing, isApplication: "true") do%>
           <md-button class="md-raised">
             Apply
           </md-button>
-          <% end %>
-        </div>  
+          <% end %> 
         </md-card-actions>
       </md-card>
       <% end %>
@@ -104,6 +102,4 @@
 </table>-->
 
 <br>
-<div data-no-turbolink>
-  <%= link_to 'New Listing', new_listing_path%>
-</div>
+<%= link_to 'New Listing', new_listing_path%>
