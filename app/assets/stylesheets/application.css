@@ -22,3 +22,17 @@
 #id {
 	font-size: 30px;
 }
+
+#container {
+	width: 1000px; 
+	margin:0 auto;
+}
+
+.divider {
+	margin-left: 30px; 
+	margin-right: 30px;
+}
+
+body {
+	background-color: #E0F2F1;
+}
