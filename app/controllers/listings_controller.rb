@@ -37,7 +37,7 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
-    @listing.poster = current_user.id
+    @listing.poster_id = current_user.id
 
     respond_to do |format|
       if @listing.save
