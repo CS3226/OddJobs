@@ -31,12 +31,14 @@
         </div>
         <!-- fill up the space between left and right area -->
         <span flex></span>
+
           <% if user_signed_in? %>
+
           <md-menu-bar>
             <md-menu>
-            <md-button ng-click="$mdOpenMenu()">
-              My Profile
-            </md-button>
+            <div ng-click=$mdOpenMenu()>
+            <%= link_to "My Profile", '', class:"md-button"%>
+            </div>
             <md-menu-content  width="2">
               <md-menu-item>
                 <%= link_to "View Profile", current_user, class:"md-button"%>
@@ -51,9 +53,18 @@
             <%= link_to "Logout", destroy_user_session_path, :method => :delete, class:"md-button"%>
           </md-menu>
           </md-menu-bar>
+
           <% else %>
+
+           <md-menu-bar>
+            <md-menu>
             <%= link_to "Log In", '/users/sign_in', class:"md-button"%>
+            </md-menu>
+            <md-menu>
             <%= link_to "Sign Up", '/users/sign_up', class:"md-button"%>
+          </md-menu>
+          </md-menu-bar>
+
           <% end %>
 
       </div>
