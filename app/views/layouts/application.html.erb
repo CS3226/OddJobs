@@ -10,8 +10,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:700;500;400" />
 
+  <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+    }
+  </style>
 </head>
-<body ng-app="OddjobApp" ngCloak data-no-turbolink>
+<body ng-app="OddjobApp" ng-cloak data-no-turbolink>
 
   <ui-view>
     <md-toolbar>
@@ -40,37 +45,37 @@
 
           <md-menu-bar>
             <md-menu>
-            <div ng-click=$mdOpenMenu()>
-            <%= link_to "My Profile", '', class:"md-button"%>
-            </div>
-            <md-menu-content  width="2">
-              <md-menu-item>
-                <%= link_to "View Profile", current_user, class:"md-button"%>
-              </md-menu-item>
-              <md-menu-divider></md-menu-divider>
-              <md-menu-item>
-                <%= link_to "New Listing", new_listing_path, class:"md-button"%>
-              </md-menu-item>
-            </md-menu-content>
-          </md-menu>
-          <md-menu>
-            <%= link_to "Logout", destroy_user_session_path, :method => :delete, class:"md-button"%>
-          </md-menu>
+              <div ng-click=$mdOpenMenu()>
+                <%= link_to "My Profile", '', class:"md-button"%>
+              </div>
+              <md-menu-content  width="2">
+                <md-menu-item>
+                  <%= link_to "View Profile", current_user, class:"md-button"%>
+                </md-menu-item>
+                <md-menu-divider></md-menu-divider>
+                <md-menu-item>
+                  <%= link_to "New Listing", new_listing_path, class:"md-button"%>
+                </md-menu-item>
+              </md-menu-content>
+            </md-menu>
+            <md-menu>
+              <%= link_to "Logout", destroy_user_session_path, :method => :delete, class:"md-button"%>
+            </md-menu>
           </md-menu-bar>
 
           <% else %>
 
-           <md-menu-bar>
+          <md-menu-bar>
             <md-menu>
-            <%= link_to "Log In", '/users/sign_in', class:"md-button"%>
+              <%= link_to "Log In", '/users/sign_in', class:"md-button"%>
             </md-menu>
             <md-menu>
-            <%= link_to "Sign Up", '/users/sign_up', class:"md-button"%>
-          </md-menu>
+              <%= link_to "Sign Up", '/users/sign_up', class:"md-button"%>
+            </md-menu>
           </md-menu-bar>
 
           <% end %>
-          </div>
+        </div>
       </div>
     </md-toolbar>
     <div layout="row" layout-align="center center" id="bigContainer">
@@ -82,20 +87,17 @@
     </div>
   </ui-view>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.3/angular-material.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
-
-
-    <script type="text/javascript">    
-      angular.module('OddjobApp', ['ngMaterial'])
-        .config(function($mdThemingProvider) {
-          $mdThemingProvider.theme('default')
-          .primaryPalette('teal')
-          .accentPalette('amber');
-      });
-    </script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.3/angular-material.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+  <script type="text/javascript">    
+    angular.module('OddjobApp', ['ngMaterial'])
+      .config(function($mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+        .primaryPalette('teal')
+        .accentPalette('amber');
+    });
+  </script>
 </body>
 </html>
