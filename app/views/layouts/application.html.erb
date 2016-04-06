@@ -16,27 +16,33 @@
   <ui-view>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <span><a href="\">OddJobs</a></span>
+        <span><a href="\">NUSOddJobs</a></span>
 
+        <div id="searchBox">
         <div class="md-padding" layout-xs="column" layout="row" layout-align="end center">
-          <div flex-xs flex-gt-xs="100" layout="column" layout-align="right">
-          <md-input-container>
-            <label>Search</label>
+          <div flex-xs flex-gt-xs="100" layout="column">
+            <input type="text" id="search-input" autocomplete="off" placeholder="Search listings">
+          <!--<md-input-container>
+            <label>Search listings</label>
             <input type="text" ng-model="searchStr">
-          </md-input-container>
+          </md-input-container>-->
           </div>
-          <div flex-xs layout="column">
-            <md-button class="md-raised">Search</md-button>
-          </div>
+
+          <md-button class="md-icon-button md-primary" aria-label="Search">
+            <i class="material-icons">search</i>
+          </md-button>
         </div>
+      </div>
         <!-- fill up the space between left and right area -->
-        <span flex></span>
+        <!--<span flex></span>-->
+        <div id="menu">
           <% if user_signed_in? %>
+
           <md-menu-bar>
             <md-menu>
-            <md-button ng-click="$mdOpenMenu()">
-              My Profile
-            </md-button>
+            <div ng-click=$mdOpenMenu()>
+            <%= link_to "My Profile", '', class:"md-button"%>
+            </div>
             <md-menu-content  width="2">
               <md-menu-item>
                 <%= link_to "View Profile", current_user, class:"md-button"%>
@@ -51,18 +57,29 @@
             <%= link_to "Logout", destroy_user_session_path, :method => :delete, class:"md-button"%>
           </md-menu>
           </md-menu-bar>
-          <% else %>
-            <%= link_to "Log In", '/users/sign_in', class:"md-button"%>
-            <%= link_to "Sign Up", '/users/sign_up', class:"md-button"%>
-          <% end %>
 
+          <% else %>
+
+           <md-menu-bar>
+            <md-menu>
+            <%= link_to "Log In", '/users/sign_in', class:"md-button"%>
+            </md-menu>
+            <md-menu>
+            <%= link_to "Sign Up", '/users/sign_up', class:"md-button"%>
+          </md-menu>
+          </md-menu-bar>
+
+          <% end %>
+          </div>
       </div>
     </md-toolbar>
-<div style="background-color: #E0F2F1;">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-    <%= yield %>
-</div>  
+    <div layout="row" layout-align="center center" id="bigContainer">
+      <div flex-xs="100" flex-md="100" flex-lg="70" flex-xl="60">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>  
+    </div>
   </ui-view>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
