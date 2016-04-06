@@ -1,0 +1,23 @@
+<h1>Listing notifications</h1>
+
+<%= link_to 'New notification', new_notification_path %>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Sender_id</th>
+    <th>job_application_id</th>
+    <th>receiver_id</th>
+    <th>is_read</th>
+  </tr>
+ 
+  <% @notifications.each do |notification| %>
+    <tr>
+      <td><%= notification.title %></td>
+      <td><%= notification.sender_id %></td>
+      <td><%= notification.job_application_id %></td>
+      <td><%= notification.receiver_id %></td>
+      <td><%= notification.is_read? %></td>
+    </tr>
+  <% end %>
+</table>

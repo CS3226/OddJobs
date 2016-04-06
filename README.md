@@ -52,7 +52,6 @@ If error `execJS::ProgramError` occurs while loading a page, download and instal
 
 # Starting the Server
 Run `rails server` and visit `http://localhost:3000/`
-<<<<<<< HEAD
 
 If rails prompts for you to do `bundle install`, please do.
 
