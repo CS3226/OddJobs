@@ -97,3 +97,9 @@ button:focus {
 .menu-item {
     padding-left: 0px;
 }
+
+a:hover {
+    background-color:transparent;
+    color: #666;
+}
+
