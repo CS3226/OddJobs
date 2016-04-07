@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @job_applications = JobApplication.where(user: @user)
-    @listings = Listing.where(poster: @user)
+    @listings = Listing.where(poster_id: @user)
   end
 
   # GET /users/new
