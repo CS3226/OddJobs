@@ -72,3 +72,28 @@
 #searchBox :-ms-input-placeholder {  
    color: white;
 }
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.material-icons.md-24 { 
+    font-size: 24px; }
+
+.material-icons {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.md-menu-item, .menu-icon {
+    width: 10%;
+    padding-right: 0px;
+    color: #666;
+}
+
+.menu-item {
+    padding-left: 0px;
+}
