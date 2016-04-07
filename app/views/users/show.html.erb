@@ -1,27 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<h1>View Profile</h1>
+<md-content>
+  <md-tabs md-dynamic-height md-border-bottom>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <md-tab label="Personal">
+      <md-content class="md-padding">
+        <h1 class="md-title">Personal Details</h1>
+        <p>
+          <strong>Name:</strong>
+          <%= @user.name %>
+        </p>
 
-Job Applications by User: <br />
-<% @job_applications.each do |job_application| %>
-  Application_id: <%= job_application.id %> <br />
-  Listing_id: <%= job_application.listing_id %> <br />
-  Details: <%= job_application.details %>
-<% end %> <br />
+        <p>
+          <strong>Email:</strong>
+          <%= @user.email %>
+        </p>
+      </md-content>
+    </md-tab>
 
-<br />
-Listings by User: <br />
-<% @listings.each do |listing| %>
-  Listing_id: <%= listing.id %> <br />
-  Title <%= listing.title %> <br />
-  Description <%= listing.description %> <br />
-<% end %> <br />
+    <md-tab label="Applications">
+      <md-content class="md-padding">
+        <h1 class="md-title">Your Job Applications</h1>
+        <% @job_applications.each do |job_application| %>
+        Application_id: <%= job_application.id %> <br />
+        Listing_id: <%= job_application.listing_id %> <br />
+        Details: <%= job_application.details %>
+        <% end %> <br />
+      </md-content>
+    </md-tab>
 
+    <md-tab label="Listings">
+      <md-content class="md-padding">
+        <h1 class="md-title">Your Listings</h1>
+        <% @listings.each do |listing| %>
+        Listing_id: <%= listing.id %> <br />
+        Title <%= listing.title %> <br />
+        Description <%= listing.description %> <br />
+        <% end %> <br />
+      </md-content>
+    </md-tab>
+  </md-tabs>
+</md-content>
