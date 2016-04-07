@@ -21,3 +21,10 @@ Gemfile.lock
 
 # Ignore secrets.yml
 config/secrets.yml
+
+db/schema.rb
+
+# Ignore Puma lock files etc.
+*.log
+*.pid
+*.state
