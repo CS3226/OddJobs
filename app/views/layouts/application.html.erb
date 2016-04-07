@@ -43,12 +43,14 @@
             <div ng-click=$mdOpenMenu()>
             <%= link_to "My Profile", '', class:"md-button"%>
             </div>
-            <md-menu-content  width="2">
+            <md-menu-content  width="3">
               <md-menu-item>
+              <i class="material-icons md-24 menu-icon">account_circle</i>
                 <%= link_to "View Profile", current_user, class:"md-button"%>
               </md-menu-item>
               <md-menu-divider></md-menu-divider>
               <md-menu-item>
+              <i class="material-icons md-24 menu-icon">create</i>
                 <%= link_to "New Listing", new_listing_path, class:"md-button"%>
               </md-menu-item>
             </md-menu-content>
