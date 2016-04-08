@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>View Profile</h1>
+<md-card>
 <md-content>
   <md-tabs md-dynamic-height md-border-bottom>
 
@@ -16,6 +17,8 @@
           <strong>Email:</strong>
           <%= @user.email %>
         </p>
+        
+        <%= link_to "Edit Profile", edit_user_path(current_user), class:"md-button md-raised"%>
       </md-content>
     </md-tab>
 
@@ -26,6 +29,7 @@
         Application_id: <%= job_application.id %> <br />
         Listing_id: <%= job_application.listing_id %> <br />
         Details: <%= job_application.details %>
+        <md-divider></md-divider>
         <% end %> <br />
       </md-content>
     </md-tab>
@@ -35,10 +39,12 @@
         <h1 class="md-title">Your Listings</h1>
         <% @listings.each do |listing| %>
         Listing_id: <%= listing.id %> <br />
-        Title <%= listing.title %> <br />
-        Description <%= listing.description %> <br />
+        Title: <%= listing.title %> <br />
+        Description: <%= listing.description %> <br />
+        <md-divider></md-divider>
         <% end %> <br />
       </md-content>
     </md-tab>
   </md-tabs>
 </md-content>
+</md-card>
