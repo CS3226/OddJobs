@@ -14,7 +14,7 @@
       </p>
       <p>
         <strong>Description:</strong>
-        <%= @listing.description %>
+        <%= h(@listing.description).gsub(/\n/, '<br/>').html_safe %>
       </p>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">

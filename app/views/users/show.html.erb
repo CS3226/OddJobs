@@ -28,7 +28,7 @@
         <% @job_applications.each do |job_application| %>
         Application_id: <%= job_application.id %> <br />
         Listing_id: <%= job_application.listing_id %> <br />
-        Details: <%= job_application.details %>
+        Details: <%= h(job_application.details).gsub(/\n/, '<br/>').html_safe %>
         <md-divider></md-divider>
         <% end %> <br />
       </md-content>
@@ -40,7 +40,7 @@
         <% @listings.each do |listing| %>
         Listing_id: <%= listing.id %> <br />
         Title: <%= listing.title %> <br />
-        Description: <%= listing.description %> <br />
+        Description: <%= h(listing.description).gsub(/\n/, '<br/>').html_safe %> <br />
         <md-divider></md-divider>
         <% end %> <br />
       </md-content>
