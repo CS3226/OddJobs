@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def show
     @job_applications = JobApplication.where(user: @user)
     @listings = Listing.where(poster_id: @user)
+    @notifications = Notification.where(receiver_id: @user)
   end
 
   # GET /users/new

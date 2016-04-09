@@ -31,9 +31,10 @@ class JobApplicationsController < ApplicationController
         format.html { redirect_to @job_application, notice: 'Job application was successfully created.' }
         format.json { render :show, status: :created, location: @job_application }
         @listing = @job_application.listing
-        @notification = @job_application.create_notification(title: 'Your Listing has a new application', is_read?: false)
+        @notification = @job_application.create_notification(title: 'Your listing has a new application from #current_user_id', is_read?: false)
         @notification.sender_id = @job_application.user_id
         @notification.receiver_id = @job_application.listing.poster_id
+        @notification.job_application_id = @job_application.id
         @notification.save
       else
         format.html { render :new }

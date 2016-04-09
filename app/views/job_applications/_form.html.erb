@@ -25,16 +25,16 @@
     </md-card-title>
     <md-card-content>    
     <form name="jobApplicationForm">
-      <md-input-container class="md-block">
+      <md-input-container class="md-block ng-hide">
         <label>Listing id</label>
-        <%#=<input required name="jobTitle" ng-model="project.jobTitle">%>
-          <%= f.number_field :listing_id, :value => @listing.id %>
+        <%#=  hidden_field_tag(:'jobApplicationForm[listing_id]', @listing.id)%>
+        <%= f.number_field :listing_id, :value => @listing.id%>
         <div ng-messages="projectForm.jobTitle.$error">
           <div ng-message="required">This is required.</div>
         </div>
       </md-input-container>
       <% if user_signed_in? %>        
-      <md-input-container class="md-block">    
+      <md-input-container class="md-block ng-hide">    
         <label>Applicant id</label>
         <%#=<input md-maxlength="30" required md-no-asterisk name="name" ng-model="job.applicant"></input> %>
           <%= f.number_field :user_id, :value => current_user.id %>
@@ -43,7 +43,7 @@
           <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
         </div>
       </md-input-container>
-      <% end %>
+      <% else %>
       <md-input-container class="md-block">
         <label>Email</label>
         <input required type="email" name="clientEmail" ng-model="project.clientEmail"
@@ -53,7 +53,8 @@
             Your email must be between 10 and 100 characters long and look like an e-mail address.
           </div>
         </div>
-      </md-input-container>
+      </md-input-container>      
+      <% end %>
       <md-input-container class="md-block">
         <label>Skills</label>
         <%#<input required name="skills" ng-model="project.skills"/>%>

@@ -18,15 +18,19 @@
       </p>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
+     <% if user_signed_in? %>
+      <% if current_user.id != @listing.poster_id %>
       <md-button class="md-raised" ng-click="isApplication = ! isApplication">Apply now!</md-button>
+      <%else%>
+      <%= link_to 'Edit', edit_listing_path(@listing) , class: "md-raised md-button md-ink-ripple"%>
+    <%= link_to 'Delete', @listing,  class: "md-raised md-button md-ink-ripple", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%end%>
+    <%end%>
     </md-card-actions>
   </md-card>
 
  <% if user_signed_in? %>
- <% if current_user.id == @listing.poster_id %>
- <%= link_to 'Edit', edit_listing_path(@listing) %>
- <%= link_to 'Delete', @listing, method: :delete, data: { confirm: 'Are you sure?' } %>
- <% else %>
+ <% if current_user.id != @listing.poster_id %>
  <%= render 'job_applications/form' %>
  <% end %>
 <% else %>
