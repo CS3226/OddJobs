@@ -1,14 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Applicant:</strong>
-  <%= @job_application.user_id %>
-</p>
+<p><h3>Application submitted!</h3><p>
 
 <p>
-  <strong>Listing:</strong>
-  <%= @job_application.listing_id %>
+  <strong>Application:</strong>
+  <%= @job_application.details %>
 </p>
 
-<%= link_to 'Edit', edit_job_application_path(@job_application) %> |
-<%= link_to 'Back', job_applications_path %>
+<%= link_to 'Edit Application', edit_job_application_path(@job_application, @job_application.listing_id), class:"md-button md-raised" %>
