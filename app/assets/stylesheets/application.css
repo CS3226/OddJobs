@@ -108,3 +108,6 @@ a:hover {
     vertical-align: middle;
 }
 
+#notice, .notice {
+    display: none;
+}
