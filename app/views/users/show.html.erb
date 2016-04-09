@@ -26,9 +26,17 @@
       <md-content class="md-padding">
         <h1 class="md-title">Your Job Applications</h1>
         <% @job_applications.each do |job_application| %>
-        Application_id: <%= job_application.id %> <br />
-        Listing_id: <%= job_application.listing_id %> <br />
-        Details: <%= h(job_application.details).gsub(/\n/, '<br/>').html_safe %>
+        <div class="md-3-line" layout-margin layout-padding>
+          <span>
+            <strong>Listing:</strong> <%= link_to get_listing_title(job_application.listing_id), listing_path(id:get_listing(job_application.listing_id), isApplication: "false") %> <br />
+          </span>
+          <span>
+            <strong>Application:</strong> <%= h(job_application.details).gsub(/\n/, '<br/>').html_safe %><br>
+          </span>
+          <span>
+            <strong>Date applied:</strong> <%= job_application.created_at.to_date %>
+          </span>
+        </div>
         <md-divider></md-divider>
         <% end %> <br />
       </md-content>
@@ -38,9 +46,18 @@
       <md-content class="md-padding">
         <h1 class="md-title">Your Listings</h1>
         <% @listings.each do |listing| %>
-        Listing_id: <%= listing.id %> <br />
-        Title: <%= listing.title %> <br />
-        Description: <%= h(listing.description).gsub(/\n/, '<br/>').html_safe %> <br />
+        <div class="md-3-line" layout-margin layout-padding>
+          <span>
+            <strong>Title:</strong> <%= listing.title %> <br />
+          </span>
+          <span>
+            <strong/>Description:</strong> <%= h(listing.description).gsub(/\n/, '<br/>').html_safe %> <br />
+          </span>
+          <span>
+            <strong>Date listed:</strong> <%= listing.created_at.to_date %><br>
+          </span>
+          <%-# link_to "View Applications", show_job_application_path, class:"md-button md-raised" %>
+        </div>
         <md-divider></md-divider>
         <% end %> <br />
       </md-content>
