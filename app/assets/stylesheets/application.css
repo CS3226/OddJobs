@@ -16,23 +16,90 @@
 
 /* to prevent flickering of visual elements before AngularJS is loaded */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-      display: none !important;
-}
-
-#id {
-	font-size: 30px;
+    display: none !important;
 }
 
 #container {
-	width: 1000px; 
-	margin:0 auto;
+	margin: 0 auto;
 }
 
 .divider {
-	margin-left: 30px; 
-	margin-right: 30px;
+	margin-left: 5%; 
+	margin-right: 5%;
 }
 
-body {
-	background-color: #E0F2F1;
+#bigContainer {
+	background-color: #EEF7F7;
 }
+
+#menu {
+	margin-left:auto; 
+	margin-right:0;
+}
+
+#searchBox {
+	margin-left:auto; 
+	margin-right:auto;
+}
+
+#search-input {
+	box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.87);
+    border-radius: 0;
+    display: block;
+    margin: 0;
+    padding: 4px 0;
+    width: 100%;
+    text-align: left;
+    background: 0 0;
+    box-shadow: none;
+    color: #fff;
+}
+
+#searchBox ::-webkit-input-placeholder {
+   color: white;
+}
+
+#searchBox:-moz-placeholder { /* Firefox 18- */
+   color: white;
+}
+
+#searchBox ::-moz-placeholder {  /* Firefox 19+ */
+   color: white;
+}
+
+#searchBox :-ms-input-placeholder {  
+   color: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.material-icons.md-24 { 
+    font-size: 24px; }
+
+.material-icons {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.md-menu-item, .menu-icon {
+    width: 10%;
+    padding-right: 0px;
+    color: #666;
+}
+
+.menu-item {
+    padding-left: 0px;
+}
+
+a:hover {
+    background-color:transparent;
+    color: #666;
+}
+

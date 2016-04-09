@@ -35,9 +35,10 @@
       <md-list-item class="md-3-line" layout-margin layout-padding>
       <div class="md-list-item-text">
         <span class="md-subhead"><%= link_to listing.title, listing_path(id:listing, isApplication: "false")%><br>
-          <%= listing.poster %></span><br>
+          <i class="material-icons">face</i><%= get_poster_name(listing.poster_id) %></span><br><br>
+
         <span class=".md-body-1"><%= listing.description %></span><br>
-        <span><i class="material-icons md-18">attach_money</i></span>
+        <span class=".md-body-1"><i class="material-icons md-24">attach_money</i><%= listing.remuneration %></span>
         <md-card-actions layout="row" layout-align="end center">
           <%= link_to "Apply", listing_path(id:listing, isApplication: "true"), class:"md-button md-raised"%>
         </md-card-actions>

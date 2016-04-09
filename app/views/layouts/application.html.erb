@@ -3,64 +3,116 @@
 <head>
   <title>OddJobs</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'listings', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.3/angular-material.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:700;500;400" />
 
+  <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+    }
+  </style>
 </head>
-<body ng-app="OddjobApp" ngCloak data-no-turbolink>
+<body ng-app="OddjobApp" ng-cloak data-no-turbolink>
 
   <ui-view>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <span><a href="\">OddJobs</a></span>
+        <span><a href="\" class="home">NUSOddJobs</a></span>
 
+        <div id="searchBox">
         <div class="md-padding" layout-xs="column" layout="row" layout-align="end center">
-          <div flex-xs flex-gt-xs="100" layout="column" layout-align="right">
-          <md-input-container>
-            <label>Search</label>
+          <div flex-xs flex-gt-xs="100" layout="column">
+            <input type="text" id="search-input" autocomplete="off" placeholder="Search listings">
+          <!--<md-input-container>
+            <label>Search listings</label>
             <input type="text" ng-model="searchStr">
-          </md-input-container>
+          </md-input-container>-->
           </div>
-          <div flex-xs layout="column">
-            <md-button class="md-raised">Search</md-button>
-          </div>
-        </div>
-        <!-- fill up the space between left and right area -->
-        <span flex></span>
-          <% if user_signed_in? %>
-            <%= link_to "My Profile", current_user, class:"md-button"%>
-            <%= link_to "Logout", destroy_user_session_path, :method => :delete, class:"md-button"%>
-          <% else %>
-            <%= link_to "Log In", '/users/sign_in', class:"md-button"%>
-            <%= link_to "Sign Up", '/users/sign_up', class:"md-button"%>
-          <% end %>
 
+          <md-button class="md-icon-button md-primary" aria-label="Search">
+            <i class="material-icons">search</i>
+          </md-button>
+        </div>
+      </div>
+        <!-- fill up the space between left and right area -->
+        <!--<span flex></span>-->
+        <div id="menu">
+          <% if user_signed_in? %>
+
+          <md-menu-bar>
+            <md-menu>
+            <div ng-click=$mdOpenMenu()>
+            <%= link_to "My Profile", '', class:"md-button"%>
+            </div>
+            <md-menu-content  width="3">
+              <md-menu-item>
+              <i class="material-icons md-24 menu-icon">account_circle</i>
+                <%= link_to "View Profile", current_user, class:"md-button"%>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item>
+              <i class="material-icons md-24 menu-icon">fiber_new</i>
+                <%= link_to "New Listing", new_listing_path, class:"md-button"%>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item>
+              <i class="material-icons md-24 menu-icon">create</i>
+                <%= link_to "Edit Profile", edit_user_path(current_user), class:"md-button"%>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+          <md-menu>
+            <%= link_to "Logout", destroy_user_session_path, :method => :delete, class:"md-button"%>
+          </md-menu>
+          </md-menu-bar>
+
+          <% else %>
+
+          <md-menu-bar>
+            <md-menu>
+              <%= link_to "Log In", '/users/sign_in', class:"md-button"%>
+            </md-menu>
+            <md-menu>
+              <%= link_to "Sign Up", '/users/sign_up', class:"md-button"%>
+            </md-menu>
+          </md-menu-bar>
+
+          <% end %>
+        </div>
       </div>
     </md-toolbar>
+    <div layout="row" layout-align="center center" id="bigContainer">
+      <div flex-xs="100" flex-md="100" flex-lg="70" flex-xl="60">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>  
+    </div>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-    <%= yield %>
-
+    <!--<footer id="footer">
+      <md-divider></md-divider>
+        <div id="footer-content">
+          <a href="">About</a>
+        </div>
+    </footer>-->
+    
   </ui-view>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.3/angular-material.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
-
-
-    <script type="text/javascript">    
-      angular.module('OddjobApp', ['ngMaterial'])
-        .config(function($mdThemingProvider) {
-          $mdThemingProvider.theme('default')
-          .primaryPalette('teal')
-          .accentPalette('amber');
-      });
-    </script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.3/angular-material.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+  <script type="text/javascript">    
+    angular.module('OddjobApp', ['ngMaterial'])
+      .config(function($mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+        .primaryPalette('teal')
+        .accentPalette('amber');
+    });
+  </script>
 </body>
 </html>

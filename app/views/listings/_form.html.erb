@@ -10,7 +10,9 @@
       </ul>
     </div>
   <% end %>
-
+  <div layout="row" layout-align="center center">
+  <div flex-xs="100" flex-md="80" flex-lg="70" flex-xl="60">
+<md-card>
  <md-content layout-padding>
     <div>
       <form name="userForm">
@@ -21,21 +23,24 @@
           </md-input-container>
         </div>
         <div class="field">
-        <md-input-container class="md-block">
-          <%= f.label :description %><br>
-          <%= f.text_area :description %>
-        </md-input-container>
-      </div>
-      <div layout-gt-sm="row" class="field">
-        <md-input-container class="md-block">
-          <%= f.label :is_open? %>
-          <%= f.check_box :is_open? %>
-        </md-input-container>
-       </div>
+          <md-input-container class="md-block">
+            <%= f.label :description %><br>
+            <%= f.text_area :description %>
+          </md-input-container>
+        </div>
+        <div class="field">
+          <md-input-container class="md-block">
+            <%= f.label :remuneration_details %><br>
+            <%= f.text_field :remuneration %>
+          </md-input-container>
+        </div>
       </form>
     </div>
     <div class="actions">
       <%= f.submit %>
     </div>
   </md-content>
+</md-card>
+</div>
+</div>
 <% end %>
