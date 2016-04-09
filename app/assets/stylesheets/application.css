@@ -103,3 +103,15 @@ a:hover {
     color: #666;
 }
 
+.inline-button {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+#notice, .notice {
+    display: none;
+}
+
+footer {
+  background-color: #d9d9d9;
+}
