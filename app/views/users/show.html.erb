@@ -67,7 +67,10 @@
       <md-content class="md-padding">
         <h1 class="md-title">Notifications</h1>
         <% @notifications.each do |notification| %>
-        <%=notification.sender_id %> has applied to your listing. <%=link_to 'View the application', get_application_by_id(notification.job_application_id)%><br />
+        <div class="md-3-line" layout-margin layout-padding>
+          <strong><%=get_user_name(notification.sender_id) %></strong> has applied to <strong><%=get_listing_title_by_app(notification.job_application_id) %></strong>. <%=link_to 'View the application', get_application_by_id(notification.job_application_id)%><br />
+        </div>
+        <md-divider></md-divider>
         <% end %> <br />    
       </md-content>
     </md-tab>

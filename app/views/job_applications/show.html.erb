@@ -1,10 +1,23 @@
 <p id="notice"><%= notice %></p>
 
+<% if current_user.id == @job_application.applicant%>
 <p><h3>Application submitted!</h3><p>
+<% else %>
+<p><h3>Job Title: <%= get_listing_title(@job_application.listing_id) %></h3><p>
+<p>
+  <strong>Applicant name:</strong>
+  <%= get_applicant_name(@job_application.user_id) %>
+</p>
+<p>
+  <strong>Applicant email:</strong>
+  <%= get_applicant_email(@job_application.user_id) %>
+</p>
+<% end %>
 
 <p>
-  <strong>Application:</strong>
+  <strong>Application Detail:</strong>
   <%= @job_application.details %>
 </p>
-
+<% if current_user.id == @job_application.applicant%>
 <%= link_to 'Edit Application', edit_job_application_path(@job_application, @job_application.listing_id), class:"md-button md-raised" %>
+<%end%>
