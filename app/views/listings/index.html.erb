@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div id="container">
-<md-content class="md-padding" layout-xs="column" layout="row">
+<md-content class="md-padding" layout-xs="column" layout="row" ng-controller = 'FilterCtrl'>
     <div flex-xs flex-gt-xs="30" layout="column">
       <md-card>
         <md-card-title>
@@ -12,16 +12,23 @@
           <div flex="100" flex-gt-sm="50" layout="column">
             <div>
               <div flex-xs flex="50">
-                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-                  Photography
-                </md-checkbox>
+                <md-radio-group ng-model="data.group1">
+                <% @categories.each do |category| %>
+        
+              
+                <md-radio-button value="<%=category.first%>" class="md-primary"><%=category.first%></md-radio-button>
+          
+                
+              
+              <% end %>
+              </md-radio-group>
               </div>
 
             </div>
           </div>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button>Filter</md-button>
+          <md-button ng-click="FilterListing()">Filter</md-button>
         </md-card-actions>
       </md-card>
     </div>
@@ -32,6 +39,7 @@
       <md-content>
       <md-list>
       <% @listings.each do |listing| %>
+      <div class='filter <%= get_category_name(listing.category_id).blank? ? 'Others' : get_category_name(listing.category_id)%>'>
       <md-list-item class="md-3-line" layout-margin layout-padding>
       <div class="md-list-item-text">
         <span class="md-subhead"><%= link_to listing.title, listing_path(id:listing, isApplication: "false")%><br>
@@ -41,8 +49,9 @@
         
         <span class=".md-body-1">
           <i class="material-icons md-24">attach_money</i><%= listing.remuneration %>
-        </span>
-        
+        </span><br>
+        <span class=".md-body-1"><%= link_to Category.find(listing.category_id).name, category_path(listing.category_id) %>
+        </span><br>
         <div class="inline-button apply-button" layout-align="end center">
             <%= link_to "Apply", listing_path(id:listing, isApplication: "true"), class:"md-button md-raised"%>
           </div>
@@ -52,6 +61,7 @@
       </div> 
       </md-list-item>
       <md-divider ng-if="!$last" layout="center" class="divider"></md-divider>
+      </div>
       <% end %>
       </md-list>
     </md-content>
