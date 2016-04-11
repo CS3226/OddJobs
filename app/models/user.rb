@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :listings
   has_many :notifications
+  validates :email, format: { with: /.*@(u.nus.edu|nus.edu.sg)/i }
 end
