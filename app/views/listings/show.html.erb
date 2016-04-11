@@ -26,7 +26,7 @@
     <%= link_to 'Delete', @listing,  class: "md-raised md-button md-ink-ripple", method: :delete, data: { confirm: 'Are you sure?' } %>
     <%end%>
     <%else%>
-    <p>login to apply</p>
+    <%= link_to "Log In to apply", '/users/sign_in', class:"md-raised md-button md-ink-ripple"%>
     <%end%>
     </md-card-actions>
   </md-card>
