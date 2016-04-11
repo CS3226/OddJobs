@@ -31,7 +31,7 @@
       <md-card>
       <md-content>
       <md-list>
-      <% @listings.each do |listing| %>
+      <% @listings.reverse_each do |listing| %>
       <md-list-item class="md-3-line" layout-margin layout-padding>
       <div class="md-list-item-text">
         <span class="md-subhead"><%= link_to listing.title, listing_path(id:listing, isApplication: "false")%><br>

@@ -25,7 +25,7 @@
     <md-tab label="Applications">
       <md-content class="md-padding">
         <h1 class="md-title">Your Job Applications</h1>
-        <% @job_applications.each do |job_application| %>
+        <% @job_applications.reverse_each do |job_application| %>
         <div class="md-3-line" layout-margin layout-padding>
           <span>
             <strong>Listing:</strong> <%= link_to get_listing_title(job_application.listing_id), listing_path(id:get_listing(job_application.listing_id), isApplication: "false") %> <br />
@@ -45,7 +45,7 @@
     <md-tab label="Listings">
       <md-content class="md-padding">
         <h1 class="md-title">Your Listings</h1>
-        <% @listings.each do |listing| %>
+        <% @listings.reverse_each do |listing| %>
         <div class="md-3-line" layout-margin layout-padding>
           <span>
             <strong>Title:</strong> <%= listing.title %> <br />
@@ -58,6 +58,10 @@
           </span>
           <%-# link_to "View Applications", show_job_application_path, class:"md-button md-raised" %>
         </div>
+         <md-card-actions layout="row" layout-align="end center">
+         <%= link_to 'Edit', edit_listing_path(listing) , class: "md-raised md-button md-ink-ripple"%>
+        <%= link_to 'Delete', listing,  class: "md-raised md-button md-ink-ripple", method: :delete, data: { confirm: 'Are you sure?' } %>
+      </md-card-actions>
         <md-divider></md-divider>
         <% end %> <br />
       </md-content>
@@ -66,10 +70,15 @@
     <md-tab label="Notifications">
       <md-content class="md-padding">
         <h1 class="md-title">Notifications</h1>
-        <% @notifications.each do |notification| %>
+        <% @notifications.reverse_each do |notification| %>
         <div class="md-3-line" layout-margin layout-padding>
-          <strong><%=get_user_name(notification.sender_id) %></strong> has applied to <strong><%=get_listing_title_by_app(notification.job_application_id) %></strong>. <%=link_to 'View the application', get_application_by_id(notification.job_application_id)%><br />
+          <p><strong>Job title: </strong><%= link_to get_listing_title_by_app(notification.job_application_id), get_listing(get_application_by_id(notification.job_application_id).listing_id) %></p>
+          <p><strong>Applicant name: </strong><%=get_user_name(notification.sender_id) %><br /></p>
+          <p><strong>Application date: </strong><%=notification.created_at.to_date %><br /></p>  
         </div>
+          <md-card-actions layout="row" layout-align="end center">
+            <%= link_to 'view',  get_application_by_id(notification.job_application_id),  class: "md-raised md-button md-ink-ripple"%>
+           </md-card-actions>        
         <md-divider></md-divider>
         <% end %> <br />    
       </md-content>
