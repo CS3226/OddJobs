@@ -36,6 +36,8 @@ class JobApplicationsController < ApplicationController
         @notification.receiver_id = @job_application.listing.poster_id
         @notification.job_application_id = @job_application.id
         @notification.save
+
+        UserNotifier.send_new_job_application_notification(@listing, @job_application).deliver
       else
         format.html { render :new }
         format.json { render json: @job_application.errors, status: :unprocessable_entity }
