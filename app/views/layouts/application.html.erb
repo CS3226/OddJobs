@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>OddJobs@NUS</title>
@@ -121,12 +121,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
   <script type="text/javascript">    
     angular.module('OddjobApp', ['ngMaterial'])
-    .controller('FilterCtrl', function($scope){
-        $scope.FilterListing = function(){
-          $('.filter').hide();
-          $('.' + $scope.data.group1).show();
-        };
-      })
       .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
         .primaryPalette('teal')
