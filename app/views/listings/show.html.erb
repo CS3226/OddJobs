@@ -25,6 +25,8 @@
       <%= link_to 'Edit', edit_listing_path(@listing) , class: "md-raised md-button md-ink-ripple"%>
     <%= link_to 'Delete', @listing,  class: "md-raised md-button md-ink-ripple", method: :delete, data: { confirm: 'Are you sure?' } %>
     <%end%>
+    <%else%>
+    <p>login to apply</p>
     <%end%>
     </md-card-actions>
   </md-card>
