@@ -4,12 +4,14 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %> 
+  	<md-input-container class="md-block" flex-xs="100" flex-md="50" flex-lg="30" flex-xl="30">
+    	<%= f.label :email %><br />
+    	<%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %> 
+	</md-input-container>
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+    <%= f.submit "Resend confirmation instructions", class:"md-raised md-button md-ink-ripple" %>
   </div>
 <% end %>
 

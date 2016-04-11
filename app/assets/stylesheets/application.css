@@ -40,6 +40,7 @@
 #searchBox {
 	margin-left:auto; 
 	margin-right:auto;
+  display:none;
 }
 
 #search-input {
@@ -120,6 +121,9 @@ footer {
     float:right;
 }
 
+body {
+    background: #eef7f7 !important;
+}
 /*html {
   position: relative;
   min-height: 100%;
