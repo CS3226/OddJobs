@@ -9,12 +9,12 @@
     </md-card-title>
     <md-card-content>  
     <p>
-        <strong>Posted By</strong>
+        <i class="material-icons">face</i>
         <%= get_poster_name(@listing.poster_id) %>
       </p>
       <p>
         <strong>Description:</strong>
-        <%= @listing.description %>
+        <%= h(@listing.description).gsub(/\n/, '<br/>').html_safe %>
       </p>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
@@ -23,6 +23,3 @@
   </md-card>
 
 <%= render 'job_applications/form' %>
-
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
