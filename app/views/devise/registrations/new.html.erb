@@ -4,30 +4,38 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <md-input-container class="md-block" flex-xs="100" flex-md="50" flex-lg="30" flex-xl="30">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true %>
+    </md-input-container>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email%>
+    <md-input-container class="md-block" flex-xs="100" flex-md="50" flex-lg="30" flex-xl="30">
+      <%= f.label :email %><br />
+      <%= f.email_field :email%>
+    </md-input-container>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <md-input-container class="md-block" flex-xs="100" flex-md="50" flex-lg="30" flex-xl="30">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "off" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+    </md-input-container>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <md-input-container class="md-block" flex-xs="100" flex-md="50" flex-lg="30" flex-xl="30">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </md-input-container>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class:"md-raised md-button md-ink-ripple" %>
   </div>
 <% end %>
 
