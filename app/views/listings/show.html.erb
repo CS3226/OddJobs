@@ -13,7 +13,6 @@
         <%= get_poster_name(@listing.poster_id) %>
       </p>
       <p>
-        <strong>Description:</strong>
         <%= h(@listing.description).gsub(/\n/, '<br/>').html_safe %>
       </p>
     </md-card-content>
