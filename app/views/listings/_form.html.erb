@@ -34,6 +34,11 @@
             <%= f.text_field :remuneration %>
           </md-input-container>
         </div>
+        <div class="field">
+          <md-input-container class="md-block">
+            <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select categories!") %><br>
+          </md-input-container>
+        </div>
       </form>
     </div>
     <div class="actions">
