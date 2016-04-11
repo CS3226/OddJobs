@@ -8,10 +8,11 @@ class UserNotifier < ApplicationMailer
          :subject => 'Welcome to OddJobs@NUS!' )
   end
 
-  def send_new_job_application_notification(poster, job_application)
-    @poster = poster
+  def send_new_job_application_notification(listing, job_application)
+    @listing = listing
+    @poster = User.find(@listing.poster_id)
     @job_application = job_application
     mail( :to => @poster.email,
-         :subject => 'OddJobs@NUS: New Job Application!'
+         :subject => 'OddJobs@NUS: New Job Application!' )
   end
 end
