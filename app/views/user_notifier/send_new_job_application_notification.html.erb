@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p> Hi <%= @poster.name %>!</p>
+    <br>
+    <p>You have a new job application for your listing on <%= @listing.title %></p>
+    <% url_for 'View the job application', @poster %>
+  </body>
+</html>
