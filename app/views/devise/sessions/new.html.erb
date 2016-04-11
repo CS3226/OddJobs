@@ -1,25 +1,32 @@
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
   <div class="field">
+    <md-input-container class="md-block" flex-xs="100" flex-md="50" flex-lg="30" flex-xl="30">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
+  </md-input-container>
   </div>
 
   <div class="field">
+    <md-input-container class="md-block" flex-xs="100" flex-md="50" flex-lg="30" flex-xl="30">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %>
+    </md-input-container>
   </div>
 
   <% if devise_mapping.rememberable? -%>
+  <md-input-container class="md-block" flex-xs="100" flex-md="50" flex-lg="30" flex-xl="30">
     <div class="field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
+    </md-input-container>
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class:"md-raised md-button md-ink-ripple"  %>
   </div>
 <% end %>
 
