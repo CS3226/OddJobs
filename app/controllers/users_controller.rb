@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    redirect_to root_path unless user_signed_in? && current_user.id.to_s == params[:id]
     @job_applications = JobApplication.where(user: @user)
     @listings = Listing.where(poster_id: @user)
   end
