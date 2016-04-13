@@ -4,13 +4,15 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.all.reverse_order.page(params[:page]).per(13)
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
     @job_application = @listing.job_applications.new
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
     if params[:isApplication] == "true"
       @isApplication = "true"
     else
@@ -23,6 +25,7 @@ class ListingsController < ApplicationController
     if user_signed_in?
       flash.now[:notice] = "Hello #{current_user.name}, have fun creating a new listing!"
       @listing = Listing.new
+      @categories = Category.all.map{|c| [ c.name, c.id ] }
     else
       redirect_to "/users/sign_in"
       flash[:alert] = "Please sign in to create new listings"
@@ -31,6 +34,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
   # POST /listings
@@ -38,6 +42,7 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.poster_id = current_user.id
+    @listing.category_id = params[:category_id]
 
     respond_to do |format|
       if @listing.save
@@ -82,6 +87,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:title, :description, :remuneration)
+      params.require(:listing).permit(:title, :description, :remuneration, :category_id)
     end
 end

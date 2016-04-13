@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>OddJobs@NUS</title>
@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.3/angular-material.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:700;500;400" />
+  <link rel='shortcut icon' type="image/x-icon" href='/assets/favicon.ico' />
 
   <meta charset="UTF-8">
   <meta name="keywords" content="oddjobs@nus, oddjobsnus, nusoddjobs, nus, odd, jobs, oddjobs, task, work, part time">
@@ -26,48 +27,42 @@
     <div>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <span><a href="\" class="home">OddJobs@NUS</a></span>
+        <span><a href="/" class="home">OddJobs@NUS</a></span>
 
         <div id="searchBox">
-        <div class="md-padding" layout-xs="column" layout="row" layout-align="end center">
-          <div flex-xs flex-gt-xs="100" layout="column">
-            <input type="text" id="search-input" autocomplete="off" placeholder="Search listings">
-          <!--<md-input-container>
-            <label>Search listings</label>
-            <input type="text" ng-model="searchStr">
-          </md-input-container>-->
+          <div class="md-padding" layout-xs="column" layout="row" layout-align="end center">
+            <div flex-xs flex-gt-xs="100" layout="column">
+              <input type="text" id="search-input" autocomplete="off" placeholder="Search listings">
+            </div>
+            <md-button class="md-icon-button md-primary" aria-label="Search">
+              <i class="material-icons">search</i>
+            </md-button>
           </div>
-
-          <md-button class="md-icon-button md-primary" aria-label="Search">
-            <i class="material-icons">search</i>
-          </md-button>
-        </div>
-      </div>
+		</div>
         <!-- fill up the space between left and right area -->
-        <!--<span flex></span>-->
         <div id="menu">
           <% if user_signed_in? %>
 
           <md-menu-bar>
             <md-menu>
-            <div ng-click=$mdOpenMenu()>
-            <%= link_to "My Profile", '', class:"md-button"%>
-            </div>
-            <md-menu-content  width="3">
-              <md-menu-item>
-              <i class="material-icons md-24 menu-icon">account_circle</i>
-                <%= link_to "View Profile", current_user, class:"md-button"%>
-              </md-menu-item>
-              <md-menu-divider></md-menu-divider>
-              <md-menu-item>
-              <i class="material-icons md-24 menu-icon">fiber_new</i>
-                <%= link_to "New Listing", new_listing_path, class:"md-button"%>
-              </md-menu-item>
-            </md-menu-content>
-          </md-menu>
-          <md-menu>
-            <%= link_to "Logout", destroy_user_session_path, :method => :delete, class:"md-button"%>
-          </md-menu>
+              <div ng-click=$mdOpenMenu()>
+                <%= link_to "My Profile", '', class:"md-button"%>
+              </div>
+              <md-menu-content  width="3">
+                <md-menu-item>
+                  <i class="material-icons md-24 menu-icon">account_circle</i>
+                  <%= link_to "View Profile", current_user, class:"md-button"%>
+                </md-menu-item>
+                <md-menu-divider></md-menu-divider>
+                <md-menu-item>
+                  <i class="material-icons md-24 menu-icon">fiber_new</i>
+                  <%= link_to "New Listing", new_listing_path, class:"md-button"%>
+                </md-menu-item>
+              </md-menu-content>
+            </md-menu>
+            <md-menu>
+              <%= link_to "Logout", destroy_user_session_path, :method => :delete, class:"md-button"%>
+            </md-menu>
           </md-menu-bar>
 
           <% else %>
@@ -80,13 +75,11 @@
               <%= link_to "Sign Up", '/users/sign_up', class:"md-button"%>
             </md-menu>
           </md-menu-bar>
-
           <% end %>
         </div>
       </div>
     </md-toolbar>
   </div>
-
   <div flex>
     <div layout="row" layout-align="center center" id="bigContainer">
       <div flex-xs="100" flex-md="100" flex-lg="70" flex-xl="60">
@@ -96,8 +89,7 @@
       </div>  
     </div>
   </div>
-
-    <div>
+  <div>
     <footer>
         <div layout="row" layout-align="center center">
           <div layout-margin layout-padding>
@@ -106,16 +98,7 @@
         </div>
     </footer>
   </div>
-    <!--<footer id="footer">
-      <md-divider></md-divider>
-        <div id="footer-content">
-          <a href="">About</a>
-        </div>
-    </footer>-->
-    
   </div>
-  
-
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.3/angular-material.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
@@ -133,10 +116,8 @@
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
   ga('create', 'UA-76233078-1', 'auto');
   ga('send', 'pageview');
-
   </script>
 </body>
 </html>
