@@ -6,7 +6,7 @@
   <body>
     <p> Hi <%= @poster.name %>!</p>
     <br>
-    <p>You have a new job application for your listing on <%= @listing.title %></p>
+    <p>You have a new job application for your listing on <b>[<%= @listing.title %>]</b></p>
     <%= link_to 'Check out the application', url_for("http://OddJobsNUS.com/users/#{@poster.id}") %>
   </body>
 </html>
