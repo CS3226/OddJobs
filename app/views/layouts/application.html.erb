@@ -23,6 +23,15 @@
 </head>
 <body ng-app="OddjobApp" ng-cloak data-no-turbolink>
   
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
   <div layout="column" style="height: 100%;">
     <div>
     <md-toolbar>
@@ -93,7 +102,7 @@
     <footer>
         <div layout="row" layout-align="center center">
           <div layout-margin layout-padding>
-            © 2016 OddJobs@NUS
+            © 2016 OddJobs@NUS <div class="fb-like" data-href="http://oddjobsnus.com/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
           </div>
         </div>
     </footer>
