@@ -4,7 +4,7 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all.reverse_order.page(params[:page]).per(2)
+    @listings = Listing.all.reverse_order.page(params[:page]).per(13)
     @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
