@@ -12,9 +12,9 @@
           <div flex="100" flex-gt-sm="50" layout="column">
             <div>
               <div flex-xs flex="50">
-                <a class="md-button md-ink-ripple" style="text-align: left;" href="/listings">Show all</a>
+                <a class="md-button md-ink-ripple <%= @category_id.nil? ? 'md-primary bold' : '' %>" style="text-align: left;" href="/listings">Show all</a>
                 <% @categories.each do |category| %>
-                  <a class="md-button md-ink-ripple" style="text-align: left;" href="/listings/category/<%= category.first %>"><%= category.first %></a>
+                  <a class="md-button md-ink-ripple <%= @category_id == category.second ? 'md-primary bold' : '' %>" style="text-align: left;" href="/listings/category/<%= category.first %>"><%= category.first %></a>
                 <% end %>
               </div>
             </div>
