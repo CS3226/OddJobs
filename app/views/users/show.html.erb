@@ -7,7 +7,6 @@
 
   <md-tab label="Personal">
       <md-content class="md-padding">
-        <h1 class="md-title">Personal Details</h1>
         <p>
           <strong>Name:</strong>
           <%= @user.name %>
@@ -24,7 +23,6 @@
 
     <md-tab label="Applications">
       <md-content class="md-padding">
-        <h1 class="md-title">Your Job Applications</h1>
         <% @job_applications.reverse_each do |job_application| %>
         <div class="md-3-line" layout-margin layout-padding>
           <span>
@@ -44,7 +42,6 @@
 
     <md-tab label="Listings">
       <md-content class="md-padding">
-        <h1 class="md-title">Your Listings</h1>
         <% @listings.reverse_each do |listing| %>
         <div class="md-3-line" layout-margin layout-padding>
           <span>
@@ -69,7 +66,6 @@
 
     <md-tab label="Notifications">
       <md-content class="md-padding">
-        <h1 class="md-title">Notifications</h1>
         <% @notifications.reverse_each do |notification| %>
         <div class="md-3-line" layout-margin layout-padding>
           <p><strong>Job title: </strong><%= link_to get_listing_title_by_app(notification.job_application_id), get_listing(get_application_by_id(notification.job_application_id).listing_id) %></p>
