@@ -46,7 +46,7 @@
           <md-menu-bar>
             <md-menu>
               <div ng-click=$mdOpenMenu()>
-                <%= link_to "My Profile", '', class:"md-button"%>
+                <%= link_to "My Profile (#{current_user.name})", '', class:"md-button"%>
               </div>
               <md-menu-content  width="3">
                 <md-menu-item>
