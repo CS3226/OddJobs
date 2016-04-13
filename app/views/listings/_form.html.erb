@@ -1,4 +1,9 @@
 <%= form_for(@listing) do |f| %>
+  <div layout="row" layout-align="center center">
+  <div flex-xs="100" flex-md="80" flex-lg="70" flex-xl="60">
+<md-card>
+ <md-content layout-padding>
+    <div>
   <% if @listing.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
@@ -10,11 +15,6 @@
       </ul>
     </div>
   <% end %>
-  <div layout="row" layout-align="center center">
-  <div flex-xs="100" flex-md="80" flex-lg="70" flex-xl="60">
-<md-card>
- <md-content layout-padding>
-    <div>
       <form name="userForm">
         <div layout-gt-sm="row" class="field">
           <md-input-container class="md-block" flex-gt-sm>

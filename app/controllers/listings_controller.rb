@@ -40,6 +40,10 @@ class ListingsController < ApplicationController
   # POST /listings
   # POST /listings.json
   def create
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
+    if params[:category_id].nil?
+      format.html { render :new }
+    end
     @listing = Listing.new(listing_params)
     @listing.poster_id = current_user.id
     @listing.category_id = params[:category_id]
