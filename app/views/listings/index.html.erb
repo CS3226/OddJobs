@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div id="container">
-<md-content class="md-padding" layout-xs="column" layout="row">
+  <md-content class="md-padding" layout-xs="column" layout="row">
     <div flex-xs flex-gt-xs="30" layout="column">
       <md-card>
         <md-card-title>
@@ -14,24 +14,21 @@
               <div flex-xs flex="50">
                 <md-radio-group id="filter-radio-group" ng-model="data.group1">
                   <md-radio-button value="filter" class="md-primary">Show All</md-radio-button>
-                <% @categories.each do |category| %>
-                  <md-radio-button value="<%=category.first%>" class="md-primary"><%=category.first%></md-radio-button>
-                <% end %>
-              </md-radio-group>
+                  <% @categories.each do |category| %>
+                    <md-radio-button value="<%=category.first%>" class="md-primary"><%=category.first%></md-radio-button>
+                  <% end %>
+                </md-radio-group>
               </div>
             </div>
           </div>
         </md-card-content>
       </md-card>
     </div>
-
-
     <div flex-xs flex-gt-xs="70" layout="column">
       <md-card>
         <md-content>
           <md-list>
           <% @listings.each do |listing| %>
-
             <div class='filter <%= Category.find(listing.category_id).name.blank? ? 'Others' : Category.find(listing.category_id).name%>'>
               <md-list-item class="md-3-line" layout-margin layout-padding>
                 <div class="md-list-item-text">
@@ -50,13 +47,12 @@
             </div>
           <% end %>
           <md-list-item class="md-3-line" layout-margin layout-padding>
-              <%= paginate @listings %>
+            <%= paginate @listings %>
           </md-list-item>
         </md-list>
       </md-content>
     </md-card>
   </div>
-
 </md-content>
 </div>
 <br>
