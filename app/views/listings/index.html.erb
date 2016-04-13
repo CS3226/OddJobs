@@ -12,24 +12,16 @@
           <div flex="100" flex-gt-sm="50" layout="column">
             <div>
               <div flex-xs flex="50">
-                <md-radio-group ng-model="data.group1">
+                <md-radio-group id="filter-radio-group" ng-model="data.group1">
+                  <md-radio-button value="filter" class="md-primary">Show All</md-radio-button>
                 <% @categories.each do |category| %>
-        
-              
-                <md-radio-button value="<%=category.first%>" class="md-primary"><%=category.first%></md-radio-button>
-          
-                
-              
-              <% end %>
+                  <md-radio-button value="<%=category.first%>" class="md-primary"><%=category.first%></md-radio-button>
+                <% end %>
               </md-radio-group>
               </div>
-
             </div>
           </div>
         </md-card-content>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button ng-click="FilterListing()">Filter</md-button>
-        </md-card-actions>
       </md-card>
     </div>
 
@@ -38,12 +30,9 @@
       <md-card>
       <md-content>
       <md-list>
-<<<<<<< HEAD
-      <% @listings.reverse_each do |listing| %>
-=======
+      <%# @listings.reverse_each do |listing| %>
       <% @listings.each do |listing| %>
       <div class='filter <%= Category.find(listing.category_id).name.blank? ? 'Others' : Category.find(listing.category_id).name%>'>
->>>>>>> refs/remotes/origin/phoon0901
       <md-list-item class="md-3-line" layout-margin layout-padding>
       <div class="md-list-item-text">
         <span class="md-subhead"><%= link_to listing.title, listing_path(id:listing, isApplication: "false")%><br>
