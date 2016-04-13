@@ -124,6 +124,10 @@ footer {
 body {
     background: #eef7f7 !important;
 }
+
+.bold {
+    font-weight: bold !important;
+}
 /*html {
   position: relative;
   min-height: 100%;
