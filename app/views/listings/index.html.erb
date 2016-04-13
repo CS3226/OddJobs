@@ -5,19 +5,17 @@
       <md-card>
         <md-card-title>
           <md-card-title-text>
-            <span class="md-subhead">Filter by</span>
+            <span class="md-subhead">Show by Category:</span>
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
           <div flex="100" flex-gt-sm="50" layout="column">
             <div>
               <div flex-xs flex="50">
-                <md-radio-group id="filter-radio-group" ng-model="data.group1">
-                  <md-radio-button value="filter" class="md-primary">Show&nbsp;All</md-radio-button>
-                  <% @categories.each do |category| %>
-                    <md-radio-button value="<%=category.first%>" class="md-primary"><%=category.first%></md-radio-button>
-                  <% end %>
-                </md-radio-group>
+                <a class="md-button md-ink-ripple <%= @category_id.nil? ? 'md-primary bold' : '' %>" style="text-align: left;" href="/listings">Show all</a>
+                <% @categories.each do |category| %>
+                  <a class="md-button md-ink-ripple <%= @category_id == category.second ? 'md-primary bold' : '' %>" style="text-align: left;" href="/listings/category/<%= category.first %>"><%= category.first %></a>
+                <% end %>
               </div>
             </div>
           </div>
@@ -29,6 +27,7 @@
         <md-content>
           <md-list>
           <% @listings.each do |listing| %>
+            <% logger.debug "debugging listing: #{listing.inspect}" %>
             <div class='filter <%= Category.find(listing.category_id).name.blank? ? 'Others' : Category.find(listing.category_id).name%>'>
               <md-list-item class="md-3-line" layout-margin layout-padding>
                 <div class="md-list-item-text">

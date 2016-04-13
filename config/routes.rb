@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :users
+  get '/listings/category/:category', to: 'listings#index'
   resources :listings do
     resources :job_applications
   end
