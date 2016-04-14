@@ -22,7 +22,7 @@
     }
   </style>
 </head>
-<body ng-app="OddjobApp" ng-cloak data-no-turbolink>
+<body ng-app="OddjobApp" ng-controller="oddjobCtrl" ng-cloak data-no-turbolink>
 
   <div layout="column" style="height: 100%;">
     <div>
@@ -106,6 +106,40 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
   <script type="text/javascript">    
     angular.module('OddjobApp', ['ngMaterial'])
+      .controller('oddjobCtrl', ['$scope', '$mdDialog', function($scope, $mdDialog) {
+        $scope.delete_listing = function(listing_id) {
+				showConfirmationDialog("Confirmation", "Are you sure you want to delete this listing?", "Yes", "No, I changed my mind", function() { send_delete_request(listing_id); });
+        }
+
+        function showConfirmationDialog(title, message, okButtonText, cancelButtonText, okCallback) {
+          var gameOverDialog = $mdDialog.confirm()
+            .title(title)
+            .textContent(message)
+            .ok(okButtonText)
+			  		.cancel(cancelButtonText);
+          $mdDialog.show(gameOverDialog)
+            .then( okCallback );
+        }
+
+        function send_delete_request(listing_id) {
+          var href = '/listings/' + listing_id,
+            method = 'delete',
+            target = '',
+            csrfToken = $.rails.csrfToken(),
+            csrfParam = $.rails.csrfParam(),
+            form = $('<form method="post" action="' + href + '"></form>'),
+            metadataInput = '<input name="_method" value="' + method + '" type="hidden" />';
+
+          if (csrfParam !== undefined && csrfToken !== undefined && !$.rails.isCrossDomain(href)) {
+            metadataInput += '<input name="' + csrfParam + '" value="' + csrfToken + '" type="hidden" />';
+          }
+
+          if (target) { form.attr('target', target); }
+
+          form.hide().append(metadataInput).appendTo('body');
+          form.submit();
+        }
+      }])
       .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
         .primaryPalette('teal')

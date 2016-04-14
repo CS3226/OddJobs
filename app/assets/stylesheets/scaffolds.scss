@@ -42,9 +42,12 @@ div {
 }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+  label {
+    color: red;
+  }
+  input {
+    border-bottom-color: red;
+  }
 }
 
 #error_explanation {
