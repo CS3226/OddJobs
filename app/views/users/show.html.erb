@@ -58,6 +58,7 @@
          <md-card-actions layout="row" layout-align="end center">
          <%= link_to 'Edit', edit_listing_path(listing) , class: "md-raised md-button md-ink-ripple"%>
         <%= link_to 'Delete', listing,  class: "md-raised md-button md-ink-ripple", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= listing.id %>)">Delete</a>
       </md-card-actions>
         <md-divider></md-divider>
         <% end %> <br />
