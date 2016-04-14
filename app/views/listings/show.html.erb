@@ -9,15 +9,11 @@
     </md-card-title>
     <md-card-content>  
     <p>
-        <i class="material-icons">face</i>
-        <%= get_poster_name(@listing.poster_id) %>
+        <i class="material-icons">account_circle</i>
+        <%= get_poster_name(@listing.poster_id) %>   <i class="material-icons">loyalty</i><%= Category.find(@listing.category_id).name %>
       </p>
       <p>
         <%= h(@listing.description).gsub(/\n/, '<br/>').html_safe %>
-      </p>
-      <p>
-        <strong>Category:</strong>
-        <%= link_to Category.find(@listing.category_id).name, category_path(@listing.category_id) %>
       </p>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
