@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy, :close]
 
   # GET /listings
   # GET /listings.json
@@ -84,6 +84,16 @@ class ListingsController < ApplicationController
     @listing.destroy
     respond_to do |format|
       format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  # CLOSE /listings/1
+  def close
+    @listing.is_open = false
+    @listing.save
+    respond_to do |format|
+      format.html { redirect_to listings_url, notice: 'Listing was successfully closed.' }
       format.json { head :no_content }
     end
   end

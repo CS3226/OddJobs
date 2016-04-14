@@ -122,8 +122,8 @@
         }
 
         function send_delete_request(listing_id) {
-          var href = '/listings/' + listing_id,
-            method = 'delete',
+          var href = '/listings/' + listing_id + '/close',
+            method = 'post',
             target = '',
             csrfToken = $.rails.csrfToken(),
             csrfParam = $.rails.csrfParam(),

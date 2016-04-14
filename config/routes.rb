@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :users
   get '/listings/category/:category', to: 'listings#index'
   resources :listings do
+    member do
+      post 'close'
+    end
     resources :job_applications
   end
   resources :job_applications do

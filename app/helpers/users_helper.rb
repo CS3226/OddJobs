@@ -26,4 +26,17 @@ module UsersHelper
   def get_user_name (user_id)
     User.find(user_id).name
   end
+
+  def read_notification(notification)
+    notification.is_read = true;
+    notification.save;
+  end
+
+  def get_open_status(listing)
+    if listing.is_open?
+      "Open"
+    else
+      "Closed"
+    end
+  end
 end

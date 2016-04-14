@@ -22,11 +22,15 @@
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
      <% if user_signed_in? %>
-      <% if current_user.id != @listing.poster_id %>
+      <% if @listing.is_open? %>
+      <% if current_user.id != @listing.poster_id%>
       <md-button class="md-raised" ng-click="isApplication = ! isApplication">Apply now!</md-button>
       <%else%>
       <%= link_to 'Edit', edit_listing_path(@listing) , class: "md-raised md-button md-ink-ripple"%>
       <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= @listing.id %>)">Delete</a>
+    <%end%>
+    <%else%>
+      <p>Listing Closed<p>
     <%end%>
     <%else%>
     <%= link_to "Log In to apply", '/users/sign_in', class:"md-raised md-button md-ink-ripple"%>
