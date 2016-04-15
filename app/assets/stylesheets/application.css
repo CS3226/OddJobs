@@ -133,6 +133,17 @@ body {
     font-style: italic !important;
 }
 
+#header-bar {
+    position: fixed;
+    min-height: 41px !important;
+    height: 41px;
+    box-shadow: 0 1px 0 #cccccc;
+}
+
+#body-content {
+    padding-top: 42px;
+}
+
 /*html {
   position: relative;
   min-height: 100%;
