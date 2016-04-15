@@ -1,5 +1,6 @@
 class JobApplicationsController < ApplicationController
   before_action :set_job_application, only: [:show, :edit, :update, :destroy]
+  before_action :require_permission, only: [:show, :edit, :update, :destroy]
 
   # GET /job_applications
   # GET /job_applications.json
@@ -31,7 +32,7 @@ class JobApplicationsController < ApplicationController
         format.html { redirect_to @job_application, notice: 'Job application was successfully created.' }
         format.json { render :show, status: :created, location: @job_application }
         @listing = @job_application.listing
-        @notification = @job_application.create_notification(title: 'Your listing has a new application from #current_user_id', is_read?: false)
+        @notification = @job_application.create_notification(title: 'Your listing has a new application from #current_user_id', is_read: false)
         @notification.sender_id = @job_application.user_id
         @notification.receiver_id = @job_application.listing.poster_id
         @notification.job_application_id = @job_application.id
@@ -73,6 +74,10 @@ class JobApplicationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_job_application
       @job_application = JobApplication.find(params[:id])
+    end
+
+    def require_permission
+      redirect_to '/' unless user_signed_in? && (current_user.id == @job_application.user_id || current_user.id == Listing.find(@job_application.listing_id).poster_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
