@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   # users-related routes
   get '/users', to: redirect('/')
   get '/users/new', to: redirect('/')
-  post '/users', to: redirect('/')
+  # post '/users', to: redirect('/')
   # /users/:id and /users/:id/edit are handled by controller
-  put '/users/:id', to: redirect('/')
+  # put '/users/:id', to: redirect('/')
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
