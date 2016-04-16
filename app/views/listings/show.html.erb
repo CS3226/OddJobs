@@ -50,7 +50,7 @@
   <%= @job_applications.where(:user_id => current_user.id).first.details %>
 </p>
 <p>
-  <strong>Applicant date:</strong>
+  <strong>Application date:</strong>
   <%= get_applicant_date(@job_applications.where(:user_id => current_user.id).first.user_id) %>
 </p>
 </md-card-content>
