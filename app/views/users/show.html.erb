@@ -29,7 +29,7 @@
             <strong>Listing:</strong> <%= link_to get_listing_title(job_application.listing_id), listing_path(id:get_listing(job_application.listing_id), isApplication: "false") %> <br>
           </span>
           <span>
-            <strong>Application:</strong> <%= h(job_application.details).gsub(/\n/, '<br/>').html_safe %><br>
+            <strong>Application:</strong> <%= link_to h(job_application.details).gsub(/\n/, '<br/>').html_safe, job_application %><br>
           </span>
           <span>
             <strong>Date applied:</strong> <%= job_application.created_at.to_date %>
@@ -46,8 +46,11 @@
         <% @listings.reverse_each do |listing| %>
           <div class="md-3-line" layout-margin layout-padding>
             <span>
-              <strong>Title:</strong> <%= listing.title %> <br>
+              <strong>Title:</strong> <%= link_to listing.title, listing %> <br>
             </span>
+            <span>
+              <strong>Status:</strong> <%= get_open_status(listing) %> <br>
+            </span>            
             <span>
               <strong/>Description:</strong> <%= h(listing.description).gsub(/\n/, '<br/>').html_safe %> <br>
             </span>
@@ -57,17 +60,20 @@
             <%-# link_to "View Applications", show_job_application_path, class:"md-button md-raised" %>
           </div>
           <md-card-actions layout="row" layout-align="end center">
+            <% if listing.is_open? %>
             <%= link_to 'Edit', edit_listing_path(listing) , class: "md-raised md-button md-ink-ripple"%>
-            <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= listing.id %>)">Delete</a>
+            <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= listing.id %>)">Close</a>
+            <% end %>
           </md-card-actions>
           <md-divider></md-divider>
         <% end %> <br>
       </md-content>
     </md-tab>
 
-    <md-tab label="Notifications">
+    <md-tab label="Notifications(<%=@new_notifications.count%>)">
       <md-content class="md-padding">
         <% @notifications.reverse_each do |notification| %>
+        <%read_notification(notification)%>
         <div class="md-3-line" layout-margin layout-padding>
           <p><strong>Job title: </strong><%= link_to get_listing_title_by_app(notification.job_application_id), get_listing(get_application_by_id(notification.job_application_id).listing_id) %></p>
           <p><strong>Applicant name: </strong><%=get_user_name(notification.sender_id) %><br></p>
