@@ -7,15 +7,11 @@
     </md-card-title>
     <md-card-content>  
     <p>
-        <i class="material-icons">face</i>
-        <%= get_poster_name(@listing.poster_id) %>
+        <i class="material-icons">account_circle</i>
+        <%= get_poster_name(@listing.poster_id) %>   <i class="material-icons">loyalty</i><%= Category.find(@listing.category_id).name %> <i class="material-icons md-24">local_atm</i><%= h(@listing.remuneration).gsub(/\n/, '<br/>').html_safe %>
       </p>
       <p>
         <%= h(@listing.description).gsub(/\n/, '<br/>').html_safe %>
-      </p>
-      <p>
-        <strong>Category:</strong>
-        <%= Category.find(@listing.category_id).name %>
       </p>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
