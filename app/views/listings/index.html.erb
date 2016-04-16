@@ -39,7 +39,7 @@
                   <br><br>
 
                   <span class=".md-body-1"><%= h(listing.description).gsub(/\n/, '<br/>').html_safe %></span><br>
-                                 
+
                     <% if user_signed_in? %>
                     <% if current_user.id != listing.poster_id%>
                     <%if listing.job_applications.where(:user_id => current_user.id).first.nil?%>
