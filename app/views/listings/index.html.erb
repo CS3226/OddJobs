@@ -45,6 +45,7 @@
                   </span>
                   
                   <% if listing.is_open? %>
+                    <% if user_signed_in? %>
                     <% if current_user.id != listing.poster_id%>
                       <div class="inline-button apply-button" layout-align="end center">
                         <%= link_to "Apply", listing_path(id:listing, isApplication: "true"), class:"md-button md-raised"%>
@@ -52,6 +53,7 @@
                     <%else%>
                       <%= link_to 'Edit', edit_listing_path(@listing) , class: "md-raised md-button md-ink-ripple"%>
                       <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= @listing.id %>)">Delete</a>
+                    <%end%>
                     <%end%>
                    <%else%>
                     <div class="inline-button apply-button" layout-align="end center">
