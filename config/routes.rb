@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   # listings-related routes
   get '/listings', to: redirect('/')
+  get '/listings/index'
   # /listings/new is handled by controller
   # must check whether post and put are security concern
   get '/listings/category/:category', to: 'listings#index'

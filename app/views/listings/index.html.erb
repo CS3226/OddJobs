@@ -27,7 +27,6 @@
         <md-content>
           <md-list>
           <% @listings.each do |listing| %>
-            <% if listing.is_open? %>
             <% logger.debug "debugging listing: #{listing.inspect}" %>
             <div class='filter <%= Category.find(listing.category_id).name.blank? ? 'Others' : Category.find(listing.category_id).name%>'>
               <md-list-item class="md-3-line" layout-margin layout-padding>
@@ -57,8 +56,7 @@
                       <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= listing.id %>)">Delete</a>
                       </div>
                     <%end%>
-                    <%end%>
-                  <%end%>                 
+                    <%end%>                
 
 
                 </div> 
