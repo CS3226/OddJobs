@@ -26,6 +26,13 @@
       <md-card>
         <md-content>
           <md-list>
+          <%= form_tag root_path, :method => 'get' do %>
+            <p>
+              <%= text_field_tag :search, params[:search] %>
+              <%= submit_tag "search", :name => nil %>
+            </p>
+          <% end %>
+
           <% @listings.each do |listing| %>
             <div class='filter <%= Category.find(listing.category_id).name.blank? ? 'Others' : Category.find(listing.category_id).name%>'>
               <md-list-item class="md-3-line" layout-margin layout-padding>

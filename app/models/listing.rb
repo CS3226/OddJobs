@@ -12,4 +12,9 @@ class Listing < ActiveRecord::Base
       errors.add(:base, "Each user is allowed to post #{QUOTA} listings a week.")
     end
   end
+
+  searchable do
+    boolean :is_open
+    text :title, :description
+  end
 end

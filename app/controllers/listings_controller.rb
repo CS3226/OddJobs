@@ -5,8 +5,20 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
+    logger.debug "params[:search] is #{params[:search].inspect}"
+    logger.debug "params[:category] is #{params[:category].inspect}"
     if params[:category].nil?
-      @listings = Listing.where( :is_open => true).reverse_order.page(params[:page]).per(13)
+      if params[:search].present?
+        @search = Listing.search do
+          with(:is_open, true)
+          logger.debug "search"
+          fulltext params[:search]
+          paginate :page => params[:page], :per_page => 3
+        end
+        @listings = @search.results
+      else
+        @listings = Listing.all.reverse_order.page(params[:page]).per(13)
+      end
     elsif Category.where( :name => params[:category] ).present?
       @category_id = Category.where( :name => params[:category] ).first.id
       @listings = Listing.where( :category_id => @category_id , :is_open => true).reverse_order.page(params[:page]).per(13)

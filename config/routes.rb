@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :users
 
   # listings-related routes
-  get '/listings', to: redirect('/')
+  # get '/listings', to: redirect('/')
   get '/listings/index'
   # /listings/new is handled by controller
   # must check whether post and put are security concern
