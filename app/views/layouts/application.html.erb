@@ -103,7 +103,7 @@
     angular.module('OddjobApp', ['ngMaterial'])
       .controller('oddjobCtrl', ['$scope', '$mdDialog', function($scope, $mdDialog) {
         $scope.delete_listing = function(listing_id) {
-				showConfirmationDialog("Confirmation", "Are you sure you want to delete this listing?", "Yes", "No, I changed my mind", function() { send_delete_request(listing_id); });
+				showConfirmationDialog("Confirmation", "Are you sure you want to close this listing?", "Yes", "No, I changed my mind", function() { send_delete_request(listing_id); });
         }
 
         function showConfirmationDialog(title, message, okButtonText, cancelButtonText, okCallback) {
@@ -117,8 +117,8 @@
         }
 
         function send_delete_request(listing_id) {
-          var href = '/listings/' + listing_id,
-            method = 'delete',
+          var href = '/listings/' + listing_id + '/close',
+            method = 'post',
             target = '',
             csrfToken = $.rails.csrfToken(),
             csrfParam = $.rails.csrfParam(),

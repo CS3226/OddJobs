@@ -39,10 +39,25 @@
                   <br><br>
 
                   <span class=".md-body-1"><%= h(listing.description).gsub(/\n/, '<br/>').html_safe %></span><br>
-        
-                  <div class="inline-button apply-button" layout-align="end center">
-                    <%= link_to "Apply", listing_path(id:listing, isApplication: "true"), class:"md-button md-raised"%>
-                  </div>
+                                 
+                    <% if user_signed_in? %>
+                    <% if current_user.id != listing.poster_id%>
+                    <%if listing.job_applications.where(:user_id => current_user.id).first.nil?%>
+                      <div class="inline-button apply-button" layout-align="end center">
+                        <%= link_to "Apply", listing_path(id:listing, isApplication: "true"), class:"md-button md-raised"%>
+                      </div>
+                      <%end%>
+                    <%else%>
+                      <div class="inline-button apply-button" layout-align="end center">
+                      <%= link_to 'Edit', edit_listing_path(listing) , class: "md-raised md-button md-ink-ripple"%>
+                      <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= listing.id %>)">Close</a>
+                      </div>
+                    <%end%>
+                    <%else%>
+                    <div class="inline-button apply-button" layout-align="end center">
+                        <%= link_to "Apply", listing_path(id:listing, isApplication: "true"), class:"md-button md-raised"%>
+                    </div>
+                    <%end%>                
 
                 </div> 
               </md-list-item>

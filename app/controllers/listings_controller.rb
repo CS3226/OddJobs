@@ -1,15 +1,15 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  before_action :is_poster, only: [:edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy, :close]
+  before_action :is_poster, only: [:edit, :update, :destroy, :close]
 
   # GET /listings
   # GET /listings.json
   def index
     if params[:category].nil?
-      @listings = Listing.all.reverse_order.page(params[:page]).per(13)
+      @listings = Listing.where( :is_open => true).reverse_order.page(params[:page]).per(13)
     elsif Category.where( :name => params[:category] ).present?
       @category_id = Category.where( :name => params[:category] ).first.id
-      @listings = Listing.where( :category_id => @category_id ).reverse_order.page(params[:page]).per(13)
+      @listings = Listing.where( :category_id => @category_id , :is_open => true).reverse_order.page(params[:page]).per(13)
     end
     @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
@@ -17,6 +17,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @job_applications = @listing.job_applications
     @job_application = @listing.job_applications.new
     @categories = Category.all.map{|c| [ c.name, c.id ] }
     if params[:isApplication] == "true"
@@ -89,6 +90,16 @@ class ListingsController < ApplicationController
     end
   end
 
+  # CLOSE /listings/1
+  def close
+    @listing.is_open = false
+    @listing.save
+    respond_to do |format|
+      format.html { redirect_to listings_url, notice: 'Listing was successfully closed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
@@ -101,6 +112,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:title, :description, :remuneration, :category_id)
+      params.require(:listing).permit(:title, :description, :remuneration, :category_id, :page)
     end
 end
