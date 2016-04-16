@@ -27,6 +27,7 @@
         <md-content>
           <md-list>
           <% @listings.each do |listing| %>
+            <% if listing.is_open? %>
             <% logger.debug "debugging listing: #{listing.inspect}" %>
             <div class='filter <%= Category.find(listing.category_id).name.blank? ? 'Others' : Category.find(listing.category_id).name%>'>
               <md-list-item class="md-3-line" layout-margin layout-padding>
@@ -44,21 +45,19 @@
                    <i class="material-icons md-24">attach_money</i><%= h(listing.remuneration).gsub(/\n/, '<br/>').html_safe %>
                   </span>
                   
-                  <% if listing.is_open? %>
+                  
                     <% if user_signed_in? %>
                     <% if current_user.id != listing.poster_id%>
                       <div class="inline-button apply-button" layout-align="end center">
                         <%= link_to "Apply", listing_path(id:listing, isApplication: "true"), class:"md-button md-raised"%>
                       </div>
                     <%else%>
-                      <%= link_to 'Edit', edit_listing_path(@listing) , class: "md-raised md-button md-ink-ripple"%>
-                      <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= @listing.id %>)">Delete</a>
+                      <div class="inline-button apply-button" layout-align="end center">
+                      <%= link_to 'Edit', edit_listing_path(listing) , class: "md-raised md-button md-ink-ripple"%>
+                      <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= listing.id %>)">Delete</a>
+                      </div>
                     <%end%>
                     <%end%>
-                   <%else%>
-                    <div class="inline-button apply-button" layout-align="end center">
-                      <p>Listing Closed<p>
-                    </div>
                   <%end%>                 
 
 
