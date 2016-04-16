@@ -17,7 +17,7 @@
       </p>
       <p>
         <strong>Category:</strong>
-        <%= link_to Category.find(@listing.category_id).name, category_path(@listing.category_id) %>
+        <%= Category.find(@listing.category_id).name %>
       </p>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
