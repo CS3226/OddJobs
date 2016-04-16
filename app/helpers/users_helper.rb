@@ -12,7 +12,11 @@ module UsersHelper
   end
 
   def get_listing_title_by_app(app_id)
-    Listing.find(JobApplication.find(app_id).listing_id).title
+    begin
+      Listing.find(JobApplication.find(app_id).listing_id).title
+    rescue ActiveRecord::RecordNotFound
+      ''
+    end
   end	
 
   def get_listing (listing_id) 

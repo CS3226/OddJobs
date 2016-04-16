@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   get '/notifications/new', to: redirect('/')
   get '/notifications/:id', to:  redirect('/')
   get '/notifications/:id/edit', to:  redirect('/')
+  delete '/notifications/:id', to: redirect('/')
   resources :notifications
 
   root 'listings#index'
