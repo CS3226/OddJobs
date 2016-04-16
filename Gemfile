@@ -44,6 +44,9 @@ gem 'kaminari'
 # Use faker to populate db for development
 gem 'faker'
 
+# Use sunspot_rails for text search using Solr
+gem 'sunspot_rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
