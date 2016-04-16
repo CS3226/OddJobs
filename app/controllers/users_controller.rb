@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    redirect_to root_path unless user_signed_in? && current_user.id.to_s == params[:id]
   end
 
   # POST /users

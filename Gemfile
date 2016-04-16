@@ -41,6 +41,9 @@ gem 'sendgrid-rails', '~> 2.0'
 # Use kaminari for pagination
 gem 'kaminari'
 
+# Use faker to populate db for development
+gem 'faker'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
