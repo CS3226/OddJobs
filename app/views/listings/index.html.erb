@@ -55,9 +55,13 @@
                     <%else%>
                       <div class="inline-button apply-button" layout-align="end center">
                       <%= link_to 'Edit', edit_listing_path(listing) , class: "md-raised md-button md-ink-ripple"%>
-                      <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= listing.id %>)">Delete</a>
+                      <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= listing.id %>)">Close</a>
                       </div>
                     <%end%>
+                    <%else%>
+                    <div class="inline-button apply-button" layout-align="end center">
+                        <%= link_to "Apply", listing_path(id:listing, isApplication: "true"), class:"md-button md-raised"%>
+                    </div>
                     <%end%>                
 
 
