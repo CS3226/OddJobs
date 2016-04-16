@@ -74,7 +74,7 @@ class UsersController < ApplicationController
     end
 
     def require_permission
-      redirect_to '/' unless user_signed_in? && current_user.id == @user.id
+      redirect_to '/users/sign_in' unless user_signed_in? && current_user.id == @user.id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
