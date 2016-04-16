@@ -29,7 +29,7 @@
             <strong>Listing:</strong> <%= link_to get_listing_title(job_application.listing_id), listing_path(id:get_listing(job_application.listing_id), isApplication: "false") %> <br>
           </span>
           <span>
-            <strong>Application:</strong> <%= link_to h(job_application.details).gsub(/\n/, '<br/>').html_safe, job_application %><br>
+            <strong>Application:</strong> <%= h(job_application.details).gsub(/\n/, '<br/>').html_safe %><br>
           </span>
           <span>
             <strong>Date applied:</strong> <%= job_application.created_at.to_date %>
