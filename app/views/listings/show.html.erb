@@ -28,7 +28,7 @@
       <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= @listing.id %>)">Delete</a>
     <%end%>
     <%else%>
-      <p>Listing Closed<p>
+      <p>Listing Closed</p>
     <%end%>
     <%else%>
     <%= link_to "Log In to apply", '/users/sign_in', class:"md-raised md-button md-ink-ripple"%>
@@ -38,7 +38,7 @@
 
  <% if user_signed_in? %>
  <% if current_user.id != @listing.poster_id %>
- <%if @job_applications.where(:user_id => current_user.id).nil?%>
+ <%if @job_applications.where(:user_id => current_user.id).first.nil?%>
  <%= render 'job_applications/form' %>
   <%#= render all applications for the listing %>
   <%else%>
