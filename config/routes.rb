@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'extra_pages/contactUs', to: 'extra_pages#contactUs'
+
   # categories-related routes
   get '/categories', to: redirect('/')
   get '/categories/new', to: redirect('/')
