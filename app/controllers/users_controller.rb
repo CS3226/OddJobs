@@ -16,6 +16,11 @@ class UsersController < ApplicationController
     @listings = Listing.where(poster_id: @user)
     @notifications = Notification.where(receiver_id: @user)
     @new_notifications = Notification.where("receiver_id = ? AND is_read = ?", @user, false)
+    if params[:tab].nil?
+      @tab = 0
+    else
+      @tab = params[:tab]
+    end
   end
 
   # GET /users/new
@@ -80,6 +85,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :tab)
     end
 end

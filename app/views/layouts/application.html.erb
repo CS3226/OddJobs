@@ -52,7 +52,7 @@
               <md-menu-content  width="3">
                 <md-menu-item>
                   <i class="material-icons md-24 menu-icon">account_circle</i>
-                  <%= link_to "View Profile", current_user, class:"md-button"%>
+                  <%= link_to "View Profile", current_user, class:"md-button", :tab => 0 %>
                 </md-menu-item>
                 <md-menu-divider></md-menu-divider>
                 <md-menu-item>
@@ -132,7 +132,7 @@
 
           form.hide().append(metadataInput).appendTo('body');
           form.submit();
-        }
+        }  
       }])
       .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
