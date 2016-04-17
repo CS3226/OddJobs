@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   get '/job_applications', to: redirect('/')
   get '/job_applications/new', to: redirect('/')
   # must check whether post and put are security concern
-  get '/job_applications/:id', to: redirect('/')
+  # get '/job_applications/:id', to: redirect('/')
   get '/job_applications/:id/edit', to: redirect('/')
   # /job_application/:id and :id/edit are handled by controller, BUT NOT YET IMPLEMENTED
   resources :job_applications do
