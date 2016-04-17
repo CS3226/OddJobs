@@ -32,19 +32,14 @@
               <md-list-item class="md-3-line" layout-margin layout-padding>
                 <div class="md-list-item-text">
                   <span class="md-subhead"><%= link_to listing.title, listing_path(id:listing, isApplication: "false")%></span><br>
+                    
+                    <span class=".md-body-1">
+                    <i class="material-icons">account_circle</i><%= get_poster_name(listing.poster_id) %> <i class="material-icons">loyalty</i><%= Category.find(listing.category_id).name %> <i class="material-icons md-24">local_atm</i><%= h(listing.remuneration).gsub(/\n/, '<br/>').html_safe %>
+                    </span>
+                  <br><br>
 
-                  <span class=".md-body-1 post-meta">
-                    Posted&nbsp;by:&nbsp;<%= get_poster_name(listing.poster_id) %>
-                    |&nbsp;Category:&nbsp;<%= Category.find(listing.category_id).name %>
-                  </span><br>
-                  <br>
                   <span class=".md-body-1"><%= h(listing.description).gsub(/\n/, '<br/>').html_safe %></span><br>
-                  <br>
-                  <span class=".md-body-1">
-                   <i class="material-icons md-24">attach_money</i><%= h(listing.remuneration).gsub(/\n/, '<br/>').html_safe %>
-                  </span>
-                  
-                  
+
                     <% if user_signed_in? %>
                     <% if current_user.id != listing.poster_id%>
                     <div class="inline-button apply-button" layout-align="end center">
@@ -65,7 +60,6 @@
                         <%= link_to "Apply", listing_path(id:listing, isApplication: "true"), class:"md-button md-raised"%>
                     </div>
                     <%end%>                
-
 
                 </div> 
               </md-list-item>

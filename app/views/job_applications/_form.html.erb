@@ -66,10 +66,26 @@
         </div>
       </md-input-container>
     </form>
+    
+    <div class="g-recaptcha" data-sitekey="6Lf2jB0TAAAAAP8F6URvjp6YILQmIBEUgvt9cL6n" data-callback="enableBtn">
+    </div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+  document.getElementById("submit-button").disabled = true;
+});
+
+ function enableBtn(){
+    document.getElementById("submit-button").disabled = false;
+  }
+
+</script>
+
     <md-card-content>
     <md-card-actions layout="row" layout-align="end center">
       <%#=<md-button class="md-raised">Submit</md-button>%>
-      <%= f.submit "Submit", class: "md-raised md-button md-ink-ripple"%>
+      <%= f.submit "Submit", class: "md-raised md-button md-ink-ripple", id:"submit-button"%>
     </md-card-actions>
   </md-content>
   </md-card>

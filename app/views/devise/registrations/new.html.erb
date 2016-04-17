@@ -14,6 +14,7 @@
     <md-input-container class="md-block" flex-xs="100" flex-md="50" flex-lg="30" flex-xl="30">
       <%= f.label :email %><br />
       <%= f.email_field :email%>
+      <em>(Only NUS e-mails allowed)</em>
     </md-input-container>
   </div>
 
@@ -34,8 +35,30 @@
     </md-input-container>
   </div>
 
+<div class="g-recaptcha" data-sitekey="6Lf2jB0TAAAAAP8F6URvjp6YILQmIBEUgvt9cL6n" data-callback="enableBtn">
+</div>
+
+<!--form action="javascript:alert(grecaptcha.getResponse());">
+      <div id="example1"></div>
+      <br>
+      <input type="submit" value="getResponse">
+    </form-->
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+  document.getElementById("sign-up-button").disabled = true;
+});
+
+ function enableBtn(){
+    document.getElementById("sign-up-button").disabled = false;
+  }
+
+</script>
+
   <div class="actions">
-    <%= f.submit "Sign up", class:"md-raised md-button md-ink-ripple" %>
+    <%= f.submit "Sign up", class:"md-raised md-button md-ink-ripple", id:"sign-up-button" %>
   </div>
 <% end %>
 
