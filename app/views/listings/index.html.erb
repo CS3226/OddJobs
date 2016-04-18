@@ -23,14 +23,32 @@
       </md-card>
     </div>
     <div flex-xs flex-gt-xs="70" layout="column">
-      <md-card>
-        <md-content>
-          <div id="search-box">
+      <div flex="100">
+      <div id="search-box" class="md-block">
             <%= form_tag root_path, :method => 'get' do %>
-              <span><%= text_field_tag :search, params[:search] %></span>
-              <span><%= submit_tag "search", :name => nil %></span>
+            <md-input-container  flex="80">
+              <span><%= text_field_tag :search, params[:search], :placeholder => 'Search listings' %></span>
+            </md-input-container>
+              <span><%= submit_tag "Search", :name => nil, class:"md-button md-raised" %></span>
             <% end %>
           </div>
+        </div>
+      <md-card>
+        <md-content>
+
+          
+
+          <!--div id="search-box">
+          <div class="md-padding" layout-xs="column" layout="row" layout-align="end center">
+            <div flex-xs flex-gt-xs="100" layout="column">
+              <input type="text" id="search-input" autocomplete="off" placeholder="Search listings">
+            </div>
+            <md-button class="md-icon-button md-primary" aria-label="Search">
+              <i class="material-icons">search</i>
+            </md-button>
+          </div>
+    </div-->
+
           <md-list>
 
           <% @listings.each do |listing| %>

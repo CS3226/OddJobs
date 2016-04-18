@@ -38,11 +38,10 @@
 	margin-right:0;
 }
 
-#searchBox {
+/*#search-box {
 	margin-left:auto; 
 	margin-right:auto;
-  display:none;
-}
+}*/
 
 #search-input {
 	box-sizing: border-box;
@@ -135,9 +134,7 @@ body {
 }
 
 #search-box {
-    margin-left: 32px;
-    margin-top: 32px;
-}
+    margin-left: 32px;}
 
 #header-bar {
     position: fixed;
