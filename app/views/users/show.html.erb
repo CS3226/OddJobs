@@ -77,8 +77,8 @@
         <%read_notification(notification)%>
         <div class="md-3-line" layout-margin layout-padding>
           <p><strong>Job title: </strong><%= link_to get_listing_title_by_app(notification.job_application_id), get_listing(get_application_by_id(notification.job_application_id).listing_id) %></p>
-          <p><strong>Applicant name: </strong><%=get_user_name(notification.sender_id) %><br></p>
-          <p><strong>Application date: </strong><%=notification.created_at.to_date %><br></p>  
+          <p><strong>Applicant name: </strong><%=get_user_name(notification.sender_id) %></p>
+          <p><strong>Application date: </strong><%=notification.created_at.to_date %></p>  
         </div>
           <md-card-actions layout="row" layout-align="end center">
             <%= link_to 'view',  get_application_by_id(notification.job_application_id),  class: "md-raised md-button md-ink-ripple"%>
