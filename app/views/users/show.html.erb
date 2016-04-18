@@ -45,13 +45,19 @@
       <md-content class="md-padding">
         <% @listings.reverse_each do |listing| %>
           <div class="md-3-line" layout-margin layout-padding>
-              <span class="md-subhead"> <%= listing.title %> </span><br>
-              <span class=".md-body-1">
-                <i class="material-icons">date_range</i><%= listing.created_at.to_date %> <i class="material-icons">loyalty</i><%= Category.find(listing.category_id).name %> <i class="material-icons md-24">local_atm</i><%= h(listing.remuneration).gsub(/\n/, '<br/>').html_safe %> 
+              <span class="md-subhead"> <%= link_to listing.title, listing_path(id:listing, isApplication: "false") %> </span><br>
+              <span class=".md-body-1 post-meta">
+                Posted&nbsp;on:&nbsp;<%= listing.created_at.to_date %>&nbsp;|
+                Category:&nbsp;<%= Category.find(listing.category_id).name %>
+
                   </span>
                 <br>
             <br>
-              <span class=".md-body-1"><%= h(listing.description).gsub(/\n/, '<br/>').html_safe %></span>
+            <span class=".md-body-1"><%= h(listing.description).gsub(/\n/, '<br/>').html_safe %></span><br>
+            <br>
+                  <span class=".md-body-1">
+                    <i class="material-icons md-24">attach_money</i><%= h(listing.remuneration).gsub(/\n/, '<br>').html_safe %>
+                  </span>
             <%#- link_to "View Applications", show_job_application_path, class:"md-button md-raised" %>
 
           </div>
