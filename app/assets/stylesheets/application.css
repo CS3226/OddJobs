@@ -143,6 +143,12 @@ body {
     box-shadow: 0 1px 0 #cccccc;
 }
 
+@media screen and (max-width: 800px) {
+  #contact-us {
+    display:none;
+  }
+}
+
 /*html {
   position: relative;
   min-height: 100%;
