@@ -27,7 +27,6 @@
         <md-content>
           <md-list>
           <% @listings.each do |listing| %>
-            <% logger.debug "debugging listing: #{listing.inspect}" %>
             <div class='filter <%= Category.find(listing.category_id).name.blank? ? 'Others' : Category.find(listing.category_id).name%>'>
               <md-list-item class="md-3-line" layout-margin layout-padding>
                 <div class="md-list-item-text">
