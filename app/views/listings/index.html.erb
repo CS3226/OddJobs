@@ -33,8 +33,8 @@
                   <span class="md-subhead"><%= link_to listing.title, listing_path(id:listing, isApplication: "false")%></span><br>
                     
                     <span class=".md-body-1 post-meta">
-                      Posted&nbsp;by:&nbsp;<%= get_poster_name(listing.poster_id) %>
-                      &nbsp;Category:&nbsp;<%= Category.find(listing.category_id).name %>
+                      Posted&nbsp;by:&nbsp;<%= get_poster_name(listing.poster_id) %>&nbsp;|
+                      Category:&nbsp;<%= Category.find(listing.category_id).name %>
                     </span><br>
                   <br> 
                   <span class=".md-body-1"><%= h(listing.description).gsub(/\n/, '<br/>').html_safe %></span><br>
