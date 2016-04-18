@@ -40,13 +40,13 @@
               <i class="material-icons">search</i>
             </md-button>
           </div>
-		</div>
+    </div>
         <!-- fill up the space between left and right area -->
         <div id="menu">
           <% if user_signed_in? %>
 
           <md-menu-bar>
-            <md-menu>
+            <md-menu hide-xs>
               <div ng-click=$mdOpenMenu()>
                 <%= link_to "My Profile (#{current_user.name})", '', class:"md-button"%>
               </div>
@@ -62,8 +62,27 @@
                 </md-menu-item>
               </md-menu-content>
             </md-menu>
-            <%= link_to "Logout", destroy_user_session_path, :method => :delete, class:"md-button"%>
+            <span hide-xs><%= link_to "Logout", destroy_user_session_path, :method => :delete, class:"md-button"%></span>
           </md-menu-bar>
+
+          <!-- for small devices -->
+          <md-menu hide-gt-xs md-position-mode="target-right target" >
+            <md-button aria-label="Sample Menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+              <md-icon md-menu-origin class="material-icons">more_vert</md-icon>
+            </md-button>
+            <md-menu-content>
+              <md-menu-item>
+                <%= link_to "View Profile", current_user, style: "height: initial;", class:"md-button"%>
+              </md-menu-item>
+              <md-menu-item>
+                <%= link_to "New Listing", new_listing_path, style: "height: initial;", class:"md-button"%>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item>
+                <%= link_to "Logout", destroy_user_session_path, :method => :delete, style: "height: initial;", class:"md-button"%>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
 
           <% else %>
 
@@ -71,28 +90,30 @@
             <%= link_to "Log In", '/users/sign_in', class:"md-button"%>
             <%= link_to "Sign Up", '/users/sign_up', class:"md-button"%>
           </md-menu-bar>
-				  <md-menu hide-gt-xs md-position-mode="target-right target" >
-					  <md-button aria-label="Sample Menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-						  <md-icon md-menu-origin class="material-icons">more_vert</md-icon>
-					  </md-button>
-						<md-menu-content>
+          <md-menu hide-gt-xs md-position-mode="target-right target" >
+            <md-button aria-label="Sample Menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+              <md-icon md-menu-origin class="material-icons">more_vert</md-icon>
+            </md-button>
+
+            <!-- for small devices -->
+            <md-menu-content>
               <md-menu-item>
                 <md-button>
                   <a layout='row' style='display: block;' href='/users/sign_in'>
                     <p flex>Log In</p>        
-									</a>
-								</md-button>
+                  </a>
+                </md-button>
               </md-menu-item>
               <md-menu-item>
                 <md-button>
                   <a layout='row' style='display: block;' href='/users/sign_up'>
                     <p flex>Sign Up</p>        
                   </a>
-								</md-button>
+                </md-button>
               </md-menu-item>
             </md-menu-content>
           </md-menu>
-					
+          
           <% end %>
         </div>
       </div>
@@ -125,7 +146,7 @@
     angular.module('OddjobApp', ['ngMaterial'])
       .controller('oddjobCtrl', ['$scope', '$mdDialog', function($scope, $mdDialog) {
         $scope.delete_listing = function(listing_id) {
-				showConfirmationDialog("Confirmation", "Are you sure you want to close this listing?", "Yes", "No, I changed my mind", function() { send_delete_request(listing_id); });
+        showConfirmationDialog("Confirmation", "Are you sure you want to close this listing?", "Yes", "No, I changed my mind", function() { send_delete_request(listing_id); });
         }
 
         function showConfirmationDialog(title, message, okButtonText, cancelButtonText, okCallback) {
@@ -133,7 +154,7 @@
             .title(title)
             .textContent(message)
             .ok(okButtonText)
-			  		.cancel(cancelButtonText);
+            .cancel(cancelButtonText);
           $mdDialog.show(gameOverDialog)
             .then( okCallback );
         }
