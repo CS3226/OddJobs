@@ -91,7 +91,7 @@ class ListingsController < ApplicationController
     end
   end
 
-  # CLOSE /listings/1
+  # CLOSE /listings/1/close
   def close
     @listing.is_open = false
     @listing.save
