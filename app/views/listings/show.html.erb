@@ -21,7 +21,7 @@
       <md-button class="md-raised" ng-click="isApplication = ! isApplication">Apply now!</md-button>
       <%else%>
       <%= link_to 'Edit', edit_listing_path(@listing) , class: "md-raised md-button md-ink-ripple"%>
-      <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= @listing.id %>)">Delete</a>
+      <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= @listing.id %>)">Close</a>
     <%end%>
     <%else%>
       <p>Listing Closed</p>
