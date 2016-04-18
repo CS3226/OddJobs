@@ -30,8 +30,5 @@
 </p>
 </md-card-content>
  <md-card-actions layout="row" layout-align="end center">
-<% if current_user.id == @job_application.user_id%>
-<%= link_to 'Edit Application', edit_job_application_path(@job_application, @job_application.listing_id), class:"md-button md-raised" %>
-<%end%>
 </md-card-actions>
 </md-card>

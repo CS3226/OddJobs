@@ -69,6 +69,7 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1
   # PATCH/PUT /listings/1.json
   def update
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
     respond_to do |format|
       if @listing.update(listing_params)
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
@@ -90,12 +91,12 @@ class ListingsController < ApplicationController
     end
   end
 
-  # CLOSE /listings/1
+  # CLOSE /listings/1/close
   def close
     @listing.is_open = false
     @listing.save
     respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully closed.' }
+      format.html { redirect_to current_user }
       format.json { head :no_content }
     end
   end
