@@ -67,10 +67,32 @@
 
           <% else %>
 
-          <md-menu-bar>
+          <md-menu-bar hide-xs>
             <%= link_to "Log In", '/users/sign_in', class:"md-button"%>
             <%= link_to "Sign Up", '/users/sign_up', class:"md-button"%>
           </md-menu-bar>
+				  <md-menu hide-gt-xs md-position-mode="target-right target" >
+					  <md-button aria-label="Sample Menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+						  <md-icon md-menu-origin class="material-icons">more_vert</md-icon>
+					  </md-button>
+						<md-menu-content>
+              <md-menu-item>
+                <md-button>
+                  <a layout='row' style='display: block;' href='/users/sign_up'>
+                    <p flex>Log In</p>        
+									</a>
+								</md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button>
+                  <a layout='row' style='display: block;' href='/users/sign_up'>
+                    <p flex>Sign Up</p>        
+                  </a>
+								</md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+					
           <% end %>
         </div>
       </div>
