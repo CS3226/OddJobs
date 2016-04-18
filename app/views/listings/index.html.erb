@@ -25,7 +25,14 @@
     <div flex-xs flex-gt-xs="70" layout="column">
       <md-card>
         <md-content>
+          <div id="search-box">
+            <%= form_tag root_path, :method => 'get' do %>
+              <span><%= text_field_tag :search, params[:search] %></span>
+              <span><%= submit_tag "search", :name => nil %></span>
+            <% end %>
+          </div>
           <md-list>
+
           <% @listings.each do |listing| %>
             <div class='filter <%= Category.find(listing.category_id).name.blank? ? 'Others' : Category.find(listing.category_id).name%>'>
               <md-list-item class="md-3-line" layout-margin layout-padding>
