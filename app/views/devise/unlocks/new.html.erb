@@ -1,16 +1,26 @@
-<h2>Resend unlock instructions</h2>
+<md-card flex-xs="100" flex-md="70" flex-lg="55" flex-xl="55">
+  <md-card-title>
+      <md-card-title-text>
+        <span class="md-title">Resend unlock instructions</span>
+      </md-card-title-text>
+    </md-card-title>
+<md-card-content>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
+<md-input-container class="md-block">
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
+</md-input>
 
   <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
+    <%= f.submit "Resend unlock instructions", class:"md-raised md-button" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</md-card-content>
+</md-card>
