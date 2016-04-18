@@ -14,7 +14,7 @@ class Listing < ActiveRecord::Base
   end
 
   searchable do
-    boolean :is_open
     text :title, :description
+    boolean :is_open
   end
 end
