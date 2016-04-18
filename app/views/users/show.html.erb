@@ -59,7 +59,7 @@
             <%#- link_to "View Applications", show_job_application_path, class:"md-button md-raised" %>
           </div>
           <md-card-actions layout="row" layout-align="end center">
-            <% if listing.is_open? %>
+            <% if listing.is_open %>
               <%= link_to 'Edit', edit_listing_path(listing) , class: "md-raised md-button md-ink-ripple"%>
               <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= listing.id %>)">Close</a>
             <% else %>
