@@ -133,6 +133,11 @@ body {
     font-style: italic !important;
 }
 
+#search-box {
+    margin-left: 32px;
+    margin-top: 32px;
+}
+
 /*html {
   position: relative;
   min-height: 100%;

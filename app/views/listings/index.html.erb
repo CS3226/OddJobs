@@ -25,13 +25,13 @@
     <div flex-xs flex-gt-xs="70" layout="column">
       <md-card>
         <md-content>
+          <div id="search-box">
+            <%= form_tag root_path, :method => 'get' do %>
+              <span><%= text_field_tag :search, params[:search] %></span>
+              <span><%= submit_tag "search", :name => nil %></span>
+            <% end %>
+          </div>
           <md-list>
-          <%= form_tag root_path, :method => 'get' do %>
-            <p>
-              <%= text_field_tag :search, params[:search] %>
-              <%= submit_tag "search", :name => nil %>
-            </p>
-          <% end %>
 
           <% @listings.each do |listing| %>
             <div class='filter <%= Category.find(listing.category_id).name.blank? ? 'Others' : Category.find(listing.category_id).name%>'>
