@@ -7,76 +7,75 @@
     </md-card-title>
     <md-card-content>  
     <p>
-        <i class="material-icons">account_circle</i>
-        <%= get_poster_name(@listing.poster_id) %>   <i class="material-icons">loyalty</i><%= Category.find(@listing.category_id).name %> <i class="material-icons md-24">local_atm</i><%= h(@listing.remuneration).gsub(/\n/, '<br/>').html_safe %>
-      </p>
-      <p>
-        <%= h(@listing.description).gsub(/\n/, '<br/>').html_safe %>
-      </p>
+      <span class=".md-body-1 post-meta">
+        Posted&nbsp;by:&nbsp;<%= get_poster_name(@listing.poster_id) %>&nbsp;|
+        Category:&nbsp;<%= Category.find(@listing.category_id).name %>
+      </span><br>
+    </p>
+    <p><%= h(@listing.description).gsub(/\n/, '<br/>').html_safe %></p>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
-    <% if user_signed_in? %>
-      <% if @listing.is_open? %>
-        <% if current_user.id != @listing.poster_id%>
-          <md-button class="md-raised" ng-click="isApplication = ! isApplication">Apply now!</md-button>
-        <%else%>
-          <%= link_to 'Edit', edit_listing_path(@listing) , class: "md-raised md-button md-ink-ripple"%>
-          <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= @listing.id %>)">Close</a>
-        <%end%>
-      <%else%>
-        <p>Listing Closed</p>
-      <%end%>
-    <%else%>
-    <%= link_to "Log In to apply", '/users/sign_in', class:"md-raised md-button md-ink-ripple"%>
-    <%end%>
+      <% if user_signed_in? %>
+        <% if @listing.is_open? %>
+          <% if current_user.id != @listing.poster_id%>
+            <md-button class="md-raised" ng-click="isApplication = ! isApplication">Apply now!</md-button>
+          <% else %>
+            <%= link_to 'Edit', edit_listing_path(@listing) , class: "md-raised md-button md-ink-ripple"%>
+            <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= @listing.id %>)">Close</a>
+          <% end %>
+        <% else %>
+          <p>Listing Closed</p>
+        <% end %>
+      <% else %>
+        <%= link_to "Log In to apply", '/users/sign_in', class:"md-raised md-button md-ink-ripple"%>
+      <% end %>
     </md-card-actions>
   </md-card>
 
- <% if user_signed_in? %>
- <% if current_user.id != @listing.poster_id %>
- <%if @job_applications.where(:user_id => current_user.id).first.nil?%>
- <%= render 'job_applications/form' %>
-  <%#= render all applications for the listing %>
-  <%else%>
-  <md-card>
-      <md-card-title>
-      <md-card-title-text>
- <span class="md-title">You have made an application!</span>
-        </md-card-title-text>
-    </md-card-title>
-    <md-card-content>  
-<p>
-  <strong>Application Detail:</strong>
-  <%= @job_applications.where(:user_id => current_user.id).first.details %>
-</p>
-<p>
-  <strong>Application date:</strong>
-  <%= get_applicant_date(@job_applications.where(:user_id => current_user.id).first.user_id) %>
-</p>
-</md-card-content>
-</md-card>
-  <%end%>
- <%else%> 
- <% @job_applications.where.not(:user_id => nil).each do |job_application|%>
-  <md-card>
-      <md-card-title>
-      <md-card-title-text>
- <span class="md-title">Applicant name: <%= get_applicant_name(job_application.user_id) %></span>
-        </md-card-title-text>
-    </md-card-title>
-    <md-card-content>  
-<p>
-  <strong>Applicant email:</strong>
-  <%= get_applicant_email(job_application.user_id) %>
-</p>
-
-<p>
-  <strong>Application Detail:</strong>
-  <%= job_application.details %>
-</p>
-</md-card-content>
-</md-card>
- <%end%>
+  <% if user_signed_in? %>
+    <% if current_user.id != @listing.poster_id %>
+      <%if @job_applications.where(:user_id => current_user.id).first.nil?%>
+        <%= render 'job_applications/form' %>
+        <%#= render all applications for the listing %>
+      <% else %>
+        <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-title">You have made an application!</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>  
+          <p>
+            <strong>Application Detail:</strong>
+            <%= @job_applications.where(:user_id => current_user.id).first.details %>
+          </p>
+          <p>
+            <strong>Application date:</strong>
+            <%= get_applicant_date(@job_applications.where(:user_id => current_user.id).first.user_id) %>
+          </p>
+          </md-card-content>
+        </md-card>
+      <%end%>
+   <%else%> 
+     <% @job_applications.where.not(:user_id => nil).each do |job_application|%>
+       <md-card>
+         <md-card-title>
+           <md-card-title-text>
+             <span class="md-title">Applicant name: <%= get_applicant_name(job_application.user_id) %></span>
+            </md-card-title-text>
+          </md-card-title>
+        <md-card-content>  
+          <p>
+            <strong>Applicant email:</strong>
+            <%= get_applicant_email(job_application.user_id) %>
+          </p>
+          <p>
+            <strong>Application Detail:</strong>
+            <%= job_application.details %>
+          </p>
+        </md-card-content>
+      </md-card>
+   <%end%>
 </md-content>
 <% end %>
 <% else %>
