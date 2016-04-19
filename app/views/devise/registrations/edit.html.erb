@@ -1,10 +1,16 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<md-card flex-xs="100" flex-md="70" flex-lg="55" flex-xl="55">
+  <md-card-title>
+      <md-card-title-text>
+        <span class="md-title">Edit <%= resource_name.to_s.humanize %></span>
+      </md-card-title-text>
+    </md-card-title>
+<md-card-content>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <md-input-container class="md-block" flex-xs="100" flex-md="50" flex-lg="30" flex-xl="30">
+    <md-input-container class="md-block">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true %>
     </md-input-container>
@@ -15,21 +21,21 @@
   <% end %>
 
   <div class="field">
-    <md-input-container class="md-block" flex-xs="100" flex-md="50" flex-lg="30" flex-xl="30">
+    <md-input-container class="md-block">
       <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: "off" %>
     </md-input-container>
   </div>
 
   <div class="field">
-    <md-input-container class="md-block" flex-xs="100" flex-md="50" flex-lg="30" flex-xl="30">
+    <md-input-container class="md-block">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </md-input-container>
   </div>
 
   <div class="field">
-    <md-input-container class="md-block" flex-xs="100" flex-md="50" flex-lg="30" flex-xl="30">
+    <md-input-container class="md-block">
       <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
       <%= f.password_field :current_password, autocomplete: "off" %>
     </md-input-container>
@@ -45,3 +51,5 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"md-raised md-button md-ink-ripple" %></p>
 
 <%= link_to "Back", :back %>
+</md-card-content>
+</md-card>

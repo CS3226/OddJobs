@@ -23,42 +23,70 @@
       </md-card>
     </div>
     <div flex-xs flex-gt-xs="70" layout="column">
+      <div>
+      <div id="search-box" class="md-block">
+            <%= form_tag root_path, :method => 'get' do %>
+            <md-input-container flex-lg="100" flex-xl="100" flex-xs="100" flex-sm="100" style="width: 450px;">
+              <span><%= text_field_tag :search, params[:search], :placeholder => 'Search listings' %></span>
+            </md-input-container>
+              <span><%= submit_tag "Search", :name => nil, class:"md-button md-raised" %></span>
+            <% end %>
+          </div>
+        </div>
       <md-card>
         <md-content>
+
+          
+
+          <!--div id="search-box">
+          <div class="md-padding" layout-xs="column" layout="row" layout-align="end center">
+            <div flex-xs flex-gt-xs="100" layout="column">
+              <input type="text" id="search-input" autocomplete="off" placeholder="Search listings">
+            </div>
+            <md-button class="md-icon-button md-primary" aria-label="Search">
+              <i class="material-icons">search</i>
+            </md-button>
+          </div>
+    </div-->
+
           <md-list>
+
           <% @listings.each do |listing| %>
-            <% logger.debug "debugging listing: #{listing.inspect}" %>
             <div class='filter <%= Category.find(listing.category_id).name.blank? ? 'Others' : Category.find(listing.category_id).name%>'>
               <md-list-item class="md-3-line" layout-margin layout-padding>
                 <div class="md-list-item-text">
                   <span class="md-subhead"><%= link_to listing.title, listing_path(id:listing, isApplication: "false")%></span><br>
                     
-                    <span class=".md-body-1">
-                    <i class="material-icons">account_circle</i><%= get_poster_name(listing.poster_id) %> <i class="material-icons">loyalty</i><%= Category.find(listing.category_id).name %> <i class="material-icons md-24">local_atm</i><%= h(listing.remuneration).gsub(/\n/, '<br/>').html_safe %>
-                    </span>
-                  <br><br>
-
+                    <span class=".md-body-1 post-meta">
+                      Posted&nbsp;by:&nbsp;<%= get_poster_name(listing.poster_id) %>&nbsp;|
+                      Category:&nbsp;<%= Category.find(listing.category_id).name %>
+                    </span><br>
+                  <br> 
                   <span class=".md-body-1"><%= h(listing.description).gsub(/\n/, '<br/>').html_safe %></span><br>
+                  <br>
+                  <span class=".md-body-1">
+                    <i class="material-icons md-24">attach_money</i><%= h(listing.remuneration).gsub(/\n/, '<br>').html_safe %>
+                  </span>
 
                     <% if user_signed_in? %>
-                    <% if current_user.id != listing.poster_id%>
-                    <div class="inline-button apply-button" layout-align="end center">
-                    <%if listing.job_applications.where(:user_id => current_user.id).first.nil?%>
-                        <%= link_to "Apply", listing_path(id:listing, isApplication: "true"), class:"md-button md-raised"%>
+                      <% if current_user.id != listing.poster_id%>
+                        <div class="inline-button apply-button" layout-align="end center">
+                          <%if listing.job_applications.where(:user_id => current_user.id).first.nil?%>
+                            <%= link_to "Apply", listing_path(id:listing, isApplication: "true"), class:"md-button md-raised"%>
+                          <%else%>
+                            <p>Applied</p>
+                          <%end%>
+                        </div>
                       <%else%>
-                      <p>Applied</p>
+                        <div class="inline-button apply-button" layout-align="end center">
+                          <%= link_to 'Edit', edit_listing_path(listing) , class: "md-raised md-button md-ink-ripple"%>
+                          <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= listing.id %>)">Close</a>
+                        </div>
                       <%end%>
-                      </div>
                     <%else%>
                       <div class="inline-button apply-button" layout-align="end center">
-                      <%= link_to 'Edit', edit_listing_path(listing) , class: "md-raised md-button md-ink-ripple"%>
-                      <a class="md-raised md-button md-ink-ripple"  ng-click="delete_listing(<%= listing.id %>)">Close</a>
-                      </div>
-                    <%end%>
-                    <%else%>
-                    <div class="inline-button apply-button" layout-align="end center">
                         <%= link_to "Apply", listing_path(id:listing, isApplication: "true"), class:"md-button md-raised"%>
-                    </div>
+                      </div>
                     <%end%>                
 
                 </div> 

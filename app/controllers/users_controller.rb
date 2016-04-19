@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @job_applications = JobApplication.where(user: @user)
     @listings = Listing.where(poster_id: @user)
     @notifications = Notification.where(receiver_id: @user)
-    @new_notifications = Notification.where("receiver_id = ? AND is_read = ?", @user, false)
+    @new_notifications = Notification.where(:receiver_id => @user, :is_read => false)
   end
 
   # GET /users/new

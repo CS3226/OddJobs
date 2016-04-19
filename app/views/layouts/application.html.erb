@@ -27,11 +27,11 @@
 
   <div layout="column" style="height: 100%;">
     <div>
-    <md-toolbar>
+    <md-toolbar id="header-bar">
       <div class="md-toolbar-tools">
         <span><a href="/" class="home">OddJobs@NUS</a></span>
 
-        <div id="searchBox">
+        <!--div id="search-box">
           <div class="md-padding" layout-xs="column" layout="row" layout-align="end center">
             <div flex-xs flex-gt-xs="100" layout="column">
               <input type="text" id="search-input" autocomplete="off" placeholder="Search listings">
@@ -40,7 +40,8 @@
               <i class="material-icons">search</i>
             </md-button>
           </div>
-		</div>
+		</div-->
+
         <!-- fill up the space between left and right area -->
         <div id="menu">
           <% if user_signed_in? %>
@@ -89,7 +90,7 @@
     <footer>
         <div layout="row" layout-align="center center">
           <div layout-margin layout-padding>
-            © 2016 OddJobs@NUS <a href="https://www.facebook.com/oddjobnus/"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="/extra_pages/contactUs" style="text-decoration: none;">Contact Us</a><%#= link_to "Contact Us", '/extra_pages/contactUs', class:"md-button"%>
+            © 2016 OddJobs@NUS <a href="https://www.facebook.com/oddjobnus/"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="/extra_pages/contactUs" style="text-decoration: none;" id="contact-us">Contact Us</a><%#= link_to "Contact Us", '/extra_pages/contactUs', class:"md-button"%>
           </div>
         </div>
     </footer>

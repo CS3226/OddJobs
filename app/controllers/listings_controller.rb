@@ -2,14 +2,26 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy, :close]
   before_action :is_poster, only: [:edit, :update, :destroy, :close]
 
+  LISTINGS_PER_PAGE = 13
+
   # GET /listings
   # GET /listings.json
   def index
     if params[:category].nil?
-      @listings = Listing.where( :is_open => true).reverse_order.page(params[:page]).per(13)
+      if params[:search].present?
+        @search = Listing.search do
+          with(:is_open, true)
+          logger.debug "search"
+          fulltext params[:search]
+          paginate :page => params[:page], :per_page => LISTINGS_PER_PAGE
+        end
+        @listings = @search.results
+      else
+        @listings = Listing.all.reverse_order.page(params[:page]).per(LISTINGS_PER_PAGE)
+      end
     elsif Category.where( :name => params[:category] ).present?
       @category_id = Category.where( :name => params[:category] ).first.id
-      @listings = Listing.where( :category_id => @category_id , :is_open => true).reverse_order.page(params[:page]).per(13)
+      @listings = Listing.where( :category_id => @category_id , :is_open => true).reverse_order.page(params[:page]).per(LISTINGS_PER_PAGE)
     end
     @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
@@ -69,6 +81,7 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1
   # PATCH/PUT /listings/1.json
   def update
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
     respond_to do |format|
       if @listing.update(listing_params)
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
@@ -90,12 +103,12 @@ class ListingsController < ApplicationController
     end
   end
 
-  # CLOSE /listings/1
+  # CLOSE /listings/1/close
   def close
     @listing.is_open = false
     @listing.save
     respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully closed.' }
+      format.html { redirect_to current_user }
       format.json { head :no_content }
     end
   end
