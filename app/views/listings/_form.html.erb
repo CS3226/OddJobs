@@ -19,7 +19,7 @@
         <div layout-gt-sm="row" class="field">
           <md-input-container class="md-block" flex-gt-sm>
             <%= f.label :title %><br>
-            <%= f.text_field :title %>
+            <%= f.text_field :title, :maxlength => 80% %>
           </md-input-container>
         </div>
         <div class="field">
@@ -31,7 +31,7 @@
         <div class="field">
           <md-input-container class="md-block">
             <%= f.label :remuneration_details %><br>
-            <%= f.text_field :remuneration %>
+            <%= f.text_field :remuneration, :maxlength => 80% %>
           </md-input-container>
         </div>
         <div class="field">
