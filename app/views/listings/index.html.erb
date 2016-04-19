@@ -23,10 +23,10 @@
       </md-card>
     </div>
     <div flex-xs flex-gt-xs="70" layout="column">
-      <div flex="100">
+      <div>
       <div id="search-box" class="md-block">
             <%= form_tag root_path, :method => 'get' do %>
-            <md-input-container  flex="80">
+            <md-input-container flex-lg="100" flex-xl="100" flex-xs="100" flex-sm="100" style="width: 450px;">
               <span><%= text_field_tag :search, params[:search], :placeholder => 'Search listings' %></span>
             </md-input-container>
               <span><%= submit_tag "Search", :name => nil, class:"md-button md-raised" %></span>
