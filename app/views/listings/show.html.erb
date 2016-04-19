@@ -13,6 +13,9 @@
       </span><br>
     </p>
     <p><%= h(@listing.description).gsub(/\n/, '<br/>').html_safe %></p>
+    <span class=".md-body-1">
+      <i class="material-icons md-24">attach_money</i><%= h(@listing.remuneration).gsub(/\n/, '<br>').html_safe %>
+    </span>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
       <% if user_signed_in? %>

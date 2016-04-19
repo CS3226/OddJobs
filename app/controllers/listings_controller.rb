@@ -10,14 +10,13 @@ class ListingsController < ApplicationController
     if params[:category].nil?
       if params[:search].present?
         @search = Listing.search do
-          with(:is_open, true)
-          logger.debug "search"
           fulltext params[:search]
+          with(:is_open, true)
           paginate :page => params[:page], :per_page => LISTINGS_PER_PAGE
         end
         @listings = @search.results
       else
-        @listings = Listing.all.reverse_order.page(params[:page]).per(LISTINGS_PER_PAGE)
+        @listings = Listing.where(:is_open => true).reverse_order.page(params[:page]).per(LISTINGS_PER_PAGE)
       end
     elsif Category.where( :name => params[:category] ).present?
       @category_id = Category.where( :name => params[:category] ).first.id
