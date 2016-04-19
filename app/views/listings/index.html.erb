@@ -62,7 +62,14 @@
                       Category:&nbsp;<%= Category.find(listing.category_id).name %>
                     </span><br>
                   <br> 
-                  <span class=".md-body-1"><%= h(listing.description).gsub(/\n/, '<br/>').html_safe %></span><br>
+                  <span class=".md-body-1">
+                    <% if h(listing.description).length > 500 %> 
+                      <%= h truncate( h(listing.description).gsub(/\n/, '<br/>').html_safe, :length => 500) %>
+                      <%= link_to "more", listing_path(id:listing, isApplication: "false") %>
+                    <% else %>
+                      <%= h(listing.description).gsub(/\n/, '<br/>').html_safe %>
+                    <% end %>
+                  </span><br>
                   <br>
                   <span class=".md-body-1">
                     <i class="material-icons md-24">attach_money</i><%= h(listing.remuneration).gsub(/\n/, '<br>').html_safe %>
