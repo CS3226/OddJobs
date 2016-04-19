@@ -23,7 +23,7 @@
   </style>
   <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
-<body ng-app="OddjobApp" ng-controller="oddjobCtrl" ng-cloak data-no-turbolink>
+<body style="position: relative !important;" ng-app="OddjobApp" ng-controller="oddjobCtrl" ng-cloak data-no-turbolink>
 
   <div layout="column" style="height: 100%;">
     <div>
@@ -48,7 +48,7 @@
 
           <md-menu-bar>
             <md-menu hide-xs>
-              <div ng-click=$mdOpenMenu()>
+              <div ng-click="$mdOpenMenu()">
                 <%= link_to "My Profile (#{current_user.name})", '', class:"md-button"%>
               </div>
               <md-menu-content  width="3">
