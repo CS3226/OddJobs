@@ -14,7 +14,7 @@ namespace :db do
       print "\r...generating #{n+1}/#{NUM_CATEGORIES} categories"
       STDOUT.flush
       Category.create(
-        :name => Faker::Name.name,
+        :name => Faker::Lorem.word,
         :desc => '',
         :id => n
       )
@@ -25,9 +25,9 @@ namespace :db do
       print "\r...generating #{n+1}/#{NUM_USERS} users"
       User.create(
         :name => Faker::Name.name,
-        :email => "#{n}@u.nus.edu",
-        :password => '12345678',
-        :password_confirmation => '12345678',
+        :email => "#{n+1}@u.nus.edu",
+        :password => 'password',
+        :password_confirmation => 'password',
         :id => n
       )
     end
@@ -39,6 +39,7 @@ namespace :db do
       Listing.create(
         :title => Faker::Lorem.sentence,
         :description => Faker::Lorem.paragraphs(num_paragraphs).join("\n"),
+        :remuneration => Faker::Lorem.words(rand(1..7)).join(' '),
         :poster_id => Faker::Number.between(0, NUM_USERS-1),
         :category_id => Faker::Number.between(0, NUM_CATEGORIES-1),
         :id => n
