@@ -26,6 +26,8 @@ db/schema.rb
 
 public/assets
 
+solr
+
 # Ignore Puma lock files etc.
 *.log
 *.pid
